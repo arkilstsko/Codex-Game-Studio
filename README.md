@@ -3,7 +3,7 @@
   <p align="center">
     Turn a Codex session into a structured game development studio.
     <br />
-    49 role references. 74 Codex skills. One coordinated game workflow.
+    A further-developed Codex-first game production framework.
   </p>
 </p>
 
@@ -19,7 +19,7 @@
 
 ## Attribution
 
-Codex Game Studio is a Codex-oriented adaptation of
+Codex Game Studio is a Codex-first adaptation and further development of
 [Donchitos/Claude-Code-Game-Studios](https://github.com/Donchitos/Claude-Code-Game-Studios).
 
 The original project, studio structure, agents, workflows, rules, templates,
@@ -46,6 +46,28 @@ Codex Game Studio gives Codex a studio-shaped workflow:
 
 The user stays in control. Codex provides structure, options, implementation,
 review, and verification.
+
+## What This Fork Adds
+
+This repo is not only a command rename. It keeps the original studio idea while
+making it practical to use and maintain in Codex:
+
+- **Codex-native skill packaging** - 73 workflow skills are generated as
+  installable `$ccgs-*` Codex skills plus a bundled `ccgs-references` support
+  skill.
+- **Self-contained installs** - generated skills use relative reference paths,
+  so temp installs and normal `~/.codex/skills` installs resolve the same way.
+- **Safer installer behavior** - `--replace` stages replacements through a temp
+  copy and backup path instead of deleting the existing skill before copy
+  success is known.
+- **Codex-compatible interaction model** - legacy Task/subagent assumptions are
+  rewritten into role-reference passes, and `request_user_input` guidance follows
+  Codex's supported schema.
+- **Validation and release hygiene** - `scripts/validate_repo.py`, a prepublish
+  checklist, security reporting docs, and smoke-install checks help keep the
+  generated bundle honest.
+- **Project-ready template tree** - common game-development folders are tracked
+  with `.gitkeep` files so new projects start with the expected structure.
 
 ---
 
@@ -88,6 +110,12 @@ Preview install changes without writing:
 
 ```bash
 python3 codex-adapter/scripts/install_codex_skills.py --dry-run
+```
+
+Validate the repo and generated bundle:
+
+```bash
+python3 scripts/validate_repo.py
 ```
 
 ## Quick Start
@@ -207,6 +235,10 @@ Generated skills include a Codex adapter prelude that maps original tool names:
 | Codex subagents | Simulate the named role locally from reference files |
 | Codex hooks | Treat as reference checks unless separately wired into automation |
 
+The generated skills are intentionally conservative. They load role references
+when a workflow needs a specialist perspective, but they do not assume that
+Codex exposes a native Task-style subagent API in every environment.
+
 ## Workflow Phases
 
 1. **Concept** - brainstorm, pillars, prototype direction
@@ -232,6 +264,18 @@ The intended loop is:
 
 That keeps creative control with the user while making the process more
 structured and repeatable.
+
+## Project Status
+
+The current focus is reliability and Codex-native usability:
+
+- Install flow is tested with both default and temporary targets.
+- Generated skills are checked for stale upstream tool assumptions.
+- Reference hooks are documented as manual/reference scripts, not automatic
+  runtime hooks.
+- Engine reference workflows keep project output under `docs/engine-reference/`.
+
+See [docs/ROADMAP.md](docs/ROADMAP.md) for planned next upgrades.
 
 ## License
 

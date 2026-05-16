@@ -1,7 +1,11 @@
 # Codex Adapter for Codex Game Studio
 
-This adapter converts the original `codex-studio/skills/*/SKILL.md` workflows into
+This adapter converts `codex-studio/skills/*/SKILL.md` workflows into installable
 Codex skills named `ccgs-*`.
+
+The generated skills include Codex-specific compatibility notes, relative
+reference paths, and rewritten role workflow language so they can run from both
+`~/.codex/skills` and temporary install targets.
 
 ## Generate
 
@@ -39,7 +43,7 @@ a temporary directory.
 
 ## Invocation
 
-Original Codex slash commands map to Codex skills:
+Original slash commands map to Codex skills:
 
 ```text
 /start         -> $ccgs-start
@@ -48,5 +52,17 @@ Original Codex slash commands map to Codex skills:
 /story-done    -> $ccgs-story-done
 ```
 
-Each generated skill includes a Codex adapter note that maps Codex tools
-to Codex tools and explains how to handle CCGS agents as role references.
+Each generated skill includes a Codex adapter note that maps legacy tool
+concepts to Codex equivalents and explains how to handle CCGS agents as role
+references.
+
+## Validate
+
+From the repo root:
+
+```bash
+python3 scripts/validate_repo.py
+```
+
+The validator checks expected counts, stale upstream tool assumptions, generated
+reference paths, and a temporary self-contained install layout.
