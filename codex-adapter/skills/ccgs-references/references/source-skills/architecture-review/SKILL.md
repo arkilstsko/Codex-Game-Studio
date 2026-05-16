@@ -3,7 +3,6 @@ name: architecture-review
 description: "Validates completeness and consistency of the project architecture against all GDDs. Builds a traceability matrix mapping every GDD technical requirement to ADRs, identifies coverage gaps, detects cross-ADR conflicts, verifies engine compatibility consistency across all decisions, and produces a PASS/CONCERNS/FAIL verdict. The architecture equivalent of /design-review."
 argument-hint: "[focus: full | coverage | consistency | engine | single-gdd path/to/gdd.md]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write, request_user_input
 agent: technical-director
 reasoning-tier: Deep
 ---
@@ -62,13 +61,13 @@ Read all inputs appropriate to the mode:
 - `docs/architecture/architecture.md` if it exists
 
 ### Engine Reference
-- `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/VERSION.md`
-- `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/breaking-changes.md`
-- `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/deprecated-apis.md`
-- All files in `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/modules/`
+- `docs/engine-reference/[engine]/VERSION.md`
+- `docs/engine-reference/[engine]/breaking-changes.md`
+- `docs/engine-reference/[engine]/deprecated-apis.md`
+- All files in `docs/engine-reference/[engine]/modules/`
 
 ### Project Standards
-- `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md`
+- `../ccgs-references/references/docs/technical-preferences.md`
 
 Report a count: "Loaded [N] GDDs, [M] ADRs, engine: [name + version]."
 
@@ -324,7 +323,7 @@ Post-Cutoff API Conflicts:
 ### Engine Specialist Consultation
 
 After completing the engine audit above, spawn the **primary engine specialist** using the role-reference workflow for a domain-expert second opinion:
-- Read `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md` `Engine Specialists` section to get the primary specialist
+- Read `../ccgs-references/references/docs/technical-preferences.md` `Engine Specialists` section to get the primary specialist
 - If no engine is configured, skip this consultation
 - Spawn `role: [primary specialist]` with: all ADRs that contain engine-specific decisions or `Post-Cutoff APIs Used` fields, the engine reference docs, and the Phase 5 audit findings. Ask them to:
   1. Confirm or challenge each audit finding — specialists may know of engine nuances not captured in the reference docs

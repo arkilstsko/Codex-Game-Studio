@@ -12,7 +12,7 @@ season plan requiring user approval before handoff to production.
 
 ## Static Assertions (Structural)
 
-- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`, `allowed-tools`
+- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`
 - [ ] Has ≥2 phase headings
 - [ ] Contains verdict keywords: COMPLETE, BLOCKED
 - [ ] Contains "May I write" language in the File Write Protocol section (delegated to sub-agents)
@@ -41,7 +41,7 @@ season plan requiring user approval before handoff to production.
 1. Phase 1: Spawns `live-ops-designer` via Task; receives season brief with scope, content list, and retention mechanic; presents to user
 2. request_user_input: user approves Phase 1 output before Phase 2 begins
 3. Phase 2: Spawns `narrative-director` via Task; reads the Phase 1 season brief; produces narrative framing document (theme, story hook, lore connections); presents to user
-4. Phase 3 and 4 (parallel): Spawns `economy-designer` and `analytics-engineer` simultaneously via two Task calls before waiting for either result; economy-designer reads `design/live-ops/economy-rules.md`
+4. Phase 3 and 4 (parallel): Spawns `economy-designer` and `analytics-engineer` simultaneously via two role-reference passes before waiting for either result; economy-designer reads `design/live-ops/economy-rules.md`
 5. Phase 5: Spawns `narrative-director` and `writer` in parallel to produce in-game narrative text and player-facing copy; both read Phase 2 narrative framing doc
 6. Phase 6: Spawns `community-manager` via Task; reads season brief, economy design, and narrative framing; produces communication calendar with draft copy
 7. Phase 7: Collects all phase outputs; presents consolidated season plan summary including economy health check, analytics readiness, ethics review, and open questions
@@ -50,7 +50,7 @@ season plan requiring user approval before handoff to production.
 10. Verdict: COMPLETE — season plan produced and handed off for production
 
 **Assertions:**
-- [ ] All 7 phases execute in order; Phase 3 and 4 are issued as parallel Task calls
+- [ ] All 7 phases execute in order; Phase 3 and 4 are issued as parallel role-reference passes
 - [ ] Phase 7 consolidated summary includes all six sections (season brief, narrative framing, economy design, analytics plan, content inventory, communication calendar)
 - [ ] Ethics review section in Phase 7 explicitly references `design/live-ops/ethics-policy.md`
 - [ ] Three output documents written to `design/live-ops/seasons/` with correct naming convention
@@ -101,7 +101,7 @@ season plan requiring user approval before handoff to production.
 **Assertions:**
 - [ ] Skill does NOT guess a season name or fabricate a scope
 - [ ] Error message includes the correct usage format with the argument-hint
-- [ ] No Task calls are issued before the argument check fails
+- [ ] No role-reference passes are issued before the argument check fails
 - [ ] No files are read or written
 
 ---
@@ -116,13 +116,13 @@ season plan requiring user approval before handoff to production.
 **Input:** `/team-live-ops "Season 1: The First Thaw"` (observed at Phase 3/4 transition)
 
 **Expected behavior:**
-1. After Phase 2 is approved by the user, the orchestrator issues both Task calls (economy-designer and analytics-engineer) before awaiting either result
+1. After Phase 2 is approved by the user, the orchestrator issues both role-reference passes (economy-designer and analytics-engineer) before awaiting either result
 2. Both agents receive the season brief as context; analytics-engineer does NOT wait for economy-designer output to begin
 3. Economy-designer output and analytics-engineer output are collected together before Phase 5 begins
 4. If one of the two parallel agents blocks, the other continues; a partial result is reported
 
 **Assertions:**
-- [ ] Both Task calls for Phase 3 and Phase 4 are issued before either result is awaited — they are not sequential
+- [ ] Both role-reference passes for Phase 3 and Phase 4 are issued before either result is awaited — they are not sequential
 - [ ] Analytics-engineer prompt does NOT include economy-designer output as a required input (the inputs are independent)
 - [ ] If economy-designer blocks but analytics-engineer succeeds, analytics output is preserved and the block is surfaced via request_user_input
 - [ ] Phase 5 does not begin until BOTH Phase 3 and Phase 4 results are collected
@@ -160,7 +160,7 @@ season plan requiring user approval before handoff to production.
 
 - [ ] `request_user_input` used at every phase transition — user approves before the next phase begins
 - [ ] Phases 3 and 4 are always spawned in parallel, not sequentially
-- [ ] File Write Protocol: orchestrator never calls Write/Edit directly — all writes are delegated to sub-agents
+- [ ] File Write Protocol: orchestrator never calls explicit write/edit instructions directly — all writes are delegated to sub-agents
 - [ ] Each output document gets its own "May I write to [path]?" ask from the relevant sub-agent
 - [ ] Ethics review in Phase 7 always references the ethics policy file path explicitly
 - [ ] Error recovery: any BLOCKED agent is surfaced immediately with request_user_input options (skip / retry / stop)

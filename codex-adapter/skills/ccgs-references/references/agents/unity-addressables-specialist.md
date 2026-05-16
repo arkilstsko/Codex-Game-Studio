@@ -1,7 +1,6 @@
 ---
 name: unity-addressables-specialist
 description: "The Addressables specialist owns all Unity asset management: Addressable groups, asset loading/unloading, memory management, content catalogs, remote content delivery, and asset bundle optimization. They ensure fast load times and controlled memory usage."
-tools: Read, Glob, Grep, Write, Edit, Bash
 reasoning-tier: Standard
 maxTurns: 20
 ---

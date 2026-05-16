@@ -15,8 +15,8 @@ Use the workflow below with these Codex mappings:
 - `Bash` means use `exec_command`.
 - `Web search` and `Web fetch` mean use Codex web/browser tools when available; prefer official engine documentation for engine lookups. If web tools are unavailable, ask the user for the source URL or state the limitation.
 - `request_user_input` means use Codex's structured input tool when available: at most 3 questions, 2-3 choices per question, no multi-select. Otherwise ask concise plain-text questions.
-- Installed reference root: `~/.codex/skills/ccgs-references/references`. In this repo, the same files are mirrored under `codex-adapter/references/`.
-- Role references are not native Codex agents. Simulate the named role locally using `references/agents/`; use Codex subagents only when the user explicitly asks for parallel agent work. Load matching memory from `references/agent-memory/` when it exists.
+- Installed reference root: `../ccgs-references/references`. In this repo, the same files are mirrored under `codex-adapter/references/`.
+- Role references are not native Codex agents. Simulate the named role locally using `../ccgs-references/references/agents/`; use Codex subagents only when the user explicitly asks for parallel agent work. Load matching memory from `../ccgs-references/references/agent-memory/` when it exists.
 - Hook scripts and statusline settings from `references/hook-config.json` are reference checks. Treat them as reference checks unless you install separate Codex automation around them.
 
 When this skill writes project artifacts, keep the original CCGS directory conventions (`design/`, `docs/`, `production/`, `src/`, `tests/`, `prototypes/`) unless the target project already has a stronger convention.
@@ -107,7 +107,7 @@ Read the GDD and identify every domain present. A GDD can touch multiple domains
 | Multiplayer, sync, replication | `network-programmer` |
 | Audio cues, music triggers | `audio-director` |
 | Performance, draw calls, memory | `performance-analyst` |
-| Engine-specific patterns or APIs | Primary engine specialist (from `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md`) |
+| Engine-specific patterns or APIs | Primary engine specialist (from `../ccgs-references/references/docs/technical-preferences.md`) |
 | Acceptance criteria, test coverage | `qa-lead` |
 | Data schema, resource structure | `systems-designer` |
 | Any gameplay system | `game-designer` (always) |
@@ -118,10 +118,10 @@ These are the most common baselines — but not required for pure UI specs, audi
 
 ### Step 2 — Spawn all relevant specialists in parallel
 
-**CRITICAL: Task in this skill spawns a SUBAGENT — a separate independent Codex session
+**CRITICAL: Task in this skill spawns a ROLE PASS — a focused role-reference pass in the current Codex thread
 with its own context window. It is NOT task tracking. Do not skip specialist
 perspectives internally. Do NOT reason through domain views yourself. You MUST issue
-actual role-reference passes. A simulated review is not a specialist review.**
+role-reference passes. A simulated review is not a specialist review.**
 
 Issue all role-reference passes simultaneously. Do NOT spawn one at a time.
 
@@ -233,7 +233,7 @@ Never end the revision flow with plain text. Always close with this widget.
 
 **Second widget — tracking records (combined, for APPROVED path):**
 
-When the verdict is APPROVED, use a single `request_user_input` with `multiple-choice: true` to batch the two tracking updates:
+When the verdict is APPROVED, use a single `request_user_input` with `single-choice: true` to batch the two tracking updates:
 - Prompt: "Verdict: APPROVED. I can update the tracking records now. Select any you'd like me to complete:"
 - Options:
   - `Update systems-index.md status to 'Approved' for [system]`

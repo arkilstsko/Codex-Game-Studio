@@ -5,7 +5,7 @@
 `/architecture-decision` guides the user through section-by-section authoring of
 a new Architecture Decision Record (ADR). Required sections are: Status, Context,
 Decision, Consequences, Alternatives, and Related ADRs. The skill also stamps the
-engine version reference from `~/.codex/skills/ccgs-references/references/docs/engine-reference/` into the ADR for traceability.
+engine version reference from `docs/engine-reference/` into the ADR for traceability.
 
 In `full` review mode, TD-ADR (technical-director) and LP-FEASIBILITY
 (lead-programmer) gate agents spawn after the draft is complete. If both gates
@@ -20,14 +20,14 @@ asks "May I write" per section during authoring. ADRs are written to
 
 Verified automatically by `/skill-test static` — no fixture needed.
 
-- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`, `allowed-tools`
+- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`
 - [ ] Has ≥2 phase headings
 - [ ] Contains verdict keywords: ACCEPTED, PROPOSED, CONCERNS
 - [ ] Contains "May I write" collaborative protocol language (per-section approval)
 - [ ] Has a next-step handoff at the end
 - [ ] Documents gate behavior: TD-ADR + LP-FEASIBILITY in full mode; skipped in lean/solo
 - [ ] Documents that ADR status is Accepted (full, gates approve) or Proposed (otherwise)
-- [ ] Mentions engine version stamp from `~/.codex/skills/ccgs-references/references/docs/engine-reference/`
+- [ ] Mentions engine version stamp from `docs/engine-reference/`
 
 ---
 
@@ -50,14 +50,14 @@ In `solo` mode: both gates are skipped. ADR is written with Status: Proposed.
 
 **Fixture:**
 - `docs/architecture/` exists with no existing ADR for rendering
-- `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/VERSION.md` exists
+- `docs/engine-reference/[engine]/VERSION.md` exists
 - `production/session-state/review-mode.txt` contains `full`
 
 **Input:** `/architecture-decision rendering-approach`
 
 **Expected behavior:**
 1. Skill guides user through each required section (Status, Context, Decision, Consequences, Alternatives, Related ADRs)
-2. Engine version is stamped into the ADR from `~/.codex/skills/ccgs-references/references/docs/engine-reference/`
+2. Engine version is stamped into the ADR from `docs/engine-reference/`
 3. For each section: draft shown, "May I write this section?" asked, approved
 4. After all sections: TD-ADR and LP-FEASIBILITY gates spawn in parallel
 5. Both gates return APPROVED
@@ -178,7 +178,7 @@ In `solo` mode: both gates are skipped. ADR is written with Status: Proposed.
 ## Protocol Compliance
 
 - [ ] All 6 required sections authored before gate review
-- [ ] Engine version stamped in ADR from `~/.codex/skills/ccgs-references/references/docs/engine-reference/`
+- [ ] Engine version stamped in ADR from `docs/engine-reference/`
 - [ ] "May I write" asked per section during authoring
 - [ ] TD-ADR and LP-FEASIBILITY spawn in parallel in full mode
 - [ ] Skipped gates noted by name and mode in lean/solo output

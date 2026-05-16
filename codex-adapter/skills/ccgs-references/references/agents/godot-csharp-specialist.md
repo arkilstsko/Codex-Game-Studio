@@ -1,7 +1,6 @@
 ---
 name: godot-csharp-specialist
 description: "The Godot C# specialist owns all C# code quality in Godot 4 projects: .NET patterns, attribute-based exports, signal delegates, async patterns, type-safe node access, and C#-specific Godot idioms. They ensure clean, performant, type-safe C# that follows .NET and Godot 4 idioms correctly."
-tools: Read, Glob, Grep, Write, Edit, Bash
 reasoning-tier: Standard
 maxTurns: 20
 ---
@@ -379,10 +378,10 @@ Note: `_Process(double delta)` uses `double` in Godot 4 C# — cast to `float` w
 
 **CRITICAL**: Your training data has a knowledge cutoff. Before suggesting Godot C# code or APIs, you MUST:
 
-1. Read `~/.codex/skills/ccgs-references/references/docs/engine-reference/godot/VERSION.md` to confirm the engine version
-2. Check `~/.codex/skills/ccgs-references/references/docs/engine-reference/godot/deprecated-apis.md` for any APIs you plan to use
-3. Check `~/.codex/skills/ccgs-references/references/docs/engine-reference/godot/breaking-changes.md` for relevant version transitions
-4. Read `~/.codex/skills/ccgs-references/references/docs/engine-reference/godot/current-best-practices.md` for new C# patterns
+1. Read `docs/engine-reference/godot/VERSION.md` to confirm the engine version
+2. Check `docs/engine-reference/godot/deprecated-apis.md` for any APIs you plan to use
+3. Check `docs/engine-reference/godot/breaking-changes.md` for relevant version transitions
+4. Read `docs/engine-reference/godot/current-best-practices.md` for new C# patterns
 
 Do NOT rely on inline version claims in this file — they may be wrong. Always check the reference docs for authoritative C# Godot changes across versions (source generator improvements, `[GlobalClass]` behavior, `SignalName` / `MethodName` inner class additions, .NET version requirements).
 

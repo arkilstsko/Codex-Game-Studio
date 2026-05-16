@@ -15,8 +15,8 @@ Use the workflow below with these Codex mappings:
 - `Bash` means use `exec_command`.
 - `Web search` and `Web fetch` mean use Codex web/browser tools when available; prefer official engine documentation for engine lookups. If web tools are unavailable, ask the user for the source URL or state the limitation.
 - `request_user_input` means use Codex's structured input tool when available: at most 3 questions, 2-3 choices per question, no multi-select. Otherwise ask concise plain-text questions.
-- Installed reference root: `~/.codex/skills/ccgs-references/references`. In this repo, the same files are mirrored under `codex-adapter/references/`.
-- Role references are not native Codex agents. Simulate the named role locally using `references/agents/`; use Codex subagents only when the user explicitly asks for parallel agent work. Load matching memory from `references/agent-memory/` when it exists.
+- Installed reference root: `../ccgs-references/references`. In this repo, the same files are mirrored under `codex-adapter/references/`.
+- Role references are not native Codex agents. Simulate the named role locally using `../ccgs-references/references/agents/`; use Codex subagents only when the user explicitly asks for parallel agent work. Load matching memory from `../ccgs-references/references/agent-memory/` when it exists.
 - Hook scripts and statusline settings from `references/hook-config.json` are reference checks. Treat them as reference checks unless you install separate Codex automation around them.
 
 When this skill writes project artifacts, keep the original CCGS directory conventions (`design/`, `docs/`, `production/`, `src/`, `tests/`, `prototypes/`) unless the target project already has a stronger convention.
@@ -77,13 +77,13 @@ Read all inputs appropriate to the mode:
 - `docs/architecture/architecture.md` if it exists
 
 ### Engine Reference
-- `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/VERSION.md`
-- `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/breaking-changes.md`
-- `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/deprecated-apis.md`
-- All files in `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/modules/`
+- `docs/engine-reference/[engine]/VERSION.md`
+- `docs/engine-reference/[engine]/breaking-changes.md`
+- `docs/engine-reference/[engine]/deprecated-apis.md`
+- All files in `docs/engine-reference/[engine]/modules/`
 
 ### Project Standards
-- `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md`
+- `../ccgs-references/references/docs/technical-preferences.md`
 
 Report a count: "Loaded [N] GDDs, [M] ADRs, engine: [name + version]."
 
@@ -339,7 +339,7 @@ Post-Cutoff API Conflicts:
 ### Engine Specialist Consultation
 
 After completing the engine audit above, spawn the **primary engine specialist** using the role-reference workflow for a domain-expert second opinion:
-- Read `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md` `Engine Specialists` section to get the primary specialist
+- Read `../ccgs-references/references/docs/technical-preferences.md` `Engine Specialists` section to get the primary specialist
 - If no engine is configured, skip this consultation
 - Spawn `role: [primary specialist]` with: all ADRs that contain engine-specific decisions or `Post-Cutoff APIs Used` fields, the engine reference docs, and the Phase 5 audit findings. Ask them to:
   1. Confirm or challenge each audit finding — specialists may know of engine nuances not captured in the reference docs

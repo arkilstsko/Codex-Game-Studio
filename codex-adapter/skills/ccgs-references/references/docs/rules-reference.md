@@ -1,6 +1,6 @@
 # Path-Specific Rules
 
-Rules in `~/.codex/skills/ccgs-references/references/rules/` are automatically enforced when editing files in matching paths:
+Rules in `../ccgs-references/references/rules/` are automatically enforced when editing files in matching paths:
 
 | Rule File | Path Pattern | Enforces |
 | ---- | ---- | ---- |

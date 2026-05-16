@@ -1,7 +1,6 @@
 ---
 name: analytics-engineer
 description: "The Analytics Engineer designs telemetry systems, player behavior tracking, A/B test frameworks, and data analysis pipelines. Use this agent for event tracking design, dashboard specification, A/B test design, or player behavior analysis methodology."
-tools: Read, Glob, Grep, Write, Edit, Bash, Web search
 reasoning-tier: Standard
 maxTurns: 20
 ---

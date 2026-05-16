@@ -15,7 +15,7 @@ In any skill, replace an inline director prompt with a reference:
 
 ```
 Load the `creative-director` role reference and perform that role pass using gate **CD-PILLARS** from
-`~/.codex/skills/ccgs-references/references/docs/director-gates.md`.
+`../ccgs-references/references/docs/director-gates.md`.
 ```
 
 Pass the context listed under that gate's **Context to pass** field, then handle
@@ -79,7 +79,7 @@ Apply the resolved mode:
 ```
 # Apply mode check, then:
 Load the `[agent-name]` role reference and perform that role pass:
-- Gate: [GATE-ID] (see ~/.codex/skills/ccgs-references/references/docs/director-gates.md)
+- Gate: [GATE-ID] (see ../ccgs-references/references/docs/director-gates.md)
 - Context: [fields listed under that gate]
 - Await the verdict before proceeding.
 ```
@@ -375,7 +375,7 @@ or before finalizing any engine-specific implementation approach
 
 **Context to pass**:
 - The specific API or feature being used
-- Engine version and LLM knowledge cutoff (from `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/VERSION.md`)
+- Engine version and LLM knowledge cutoff (from `docs/engine-reference/[engine]/VERSION.md`)
 - Relevant excerpt from breaking-changes or deprecated-apis docs
 
 **Prompt**:
@@ -573,7 +573,7 @@ Agent: `art-director` | Model tier: Standard | Domain: Visual identity, art bibl
 **Context to pass**:
 - Art bible path (`design/art/art-bible.md`)
 - Game pillars and core fantasy
-- Platform and performance constraints (from `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md` if configured)
+- Platform and performance constraints (from `../ccgs-references/references/docs/technical-preferences.md` if configured)
 - Visual identity anchor chosen during brainstorm (from `design/gdd/game-concept.md`)
 
 **Prompt**:

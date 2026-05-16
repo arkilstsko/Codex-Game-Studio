@@ -16,7 +16,7 @@ is unresolved.
 
 ## Static Assertions (Structural)
 
-- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`, `allowed-tools`
+- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`
 - [ ] Has ≥2 phase headings
 - [ ] Contains verdict keywords: COMPLETE, BLOCKED
 - [ ] Contains "File Write Protocol" section
@@ -58,7 +58,7 @@ is unresolved.
 **Assertions:**
 - [ ] narrative-director is spawned in Phase 1 before any other agents
 - [ ] `request_user_input` appears after Phase 1 output and before Phase 2 launch
-- [ ] world-builder and writer Task calls are issued simultaneously in Phase 2 (not sequentially)
+- [ ] world-builder and writer role-reference passes are issued simultaneously in Phase 2 (not sequentially)
 - [ ] level-designer is not launched until Phase 2 `request_user_input` is approved
 - [ ] narrative-director is re-spawned in Phase 4 for consistency review
 - [ ] Phase 5 spawns all three agents (writer, localization-lead, world-builder) simultaneously
@@ -184,7 +184,7 @@ is unresolved.
 ## Protocol Compliance
 
 - [ ] `request_user_input` is used after every phase output before the next phase launches
-- [ ] Parallel spawning: Phase 2 (world-builder + writer) and Phase 5 (writer + localization-lead + world-builder) issue all Task calls before waiting for results
+- [ ] Parallel spawning: Phase 2 (world-builder + writer) and Phase 5 (writer + localization-lead + world-builder) issue all role-reference passes before waiting for results
 - [ ] No files are written by the orchestrator directly — all writes are delegated to sub-agents
 - [ ] Each sub-agent enforces the "May I write to [path]?" protocol before any write
 - [ ] BLOCKED status from any agent is surfaced immediately — not silently skipped

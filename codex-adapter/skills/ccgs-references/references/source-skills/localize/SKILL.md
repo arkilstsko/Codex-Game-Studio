@@ -4,7 +4,6 @@ description: "Full localization pipeline: scan for hardcoded strings, extract an
 argument-hint: "[scan|extract|validate|status|brief|cultural-review|vo-pipeline|rtl-check|freeze|qa]"
 user-invocable: true
 agent: localization-lead
-allowed-tools: Read, Glob, Grep, Write, Bash, request_user_input
 reasoning-tier: Standard
 ---
 
@@ -277,7 +276,7 @@ Grep `src/` for VO audio references. Verify each referenced path exists in `asse
 Right-to-left languages (Arabic, Hebrew, Persian, Urdu) require layout mirroring beyond
 just translating text. This mode validates the implementation.
 
-Read `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md` to determine the engine. Then check:
+Read `../ccgs-references/references/docs/technical-preferences.md` to determine the engine. Then check:
 
 **Layout mirroring**
 - Is RTL layout enabled in the engine? (Godot: `Control.layout_direction`, Unity: `RTL Support` package, Unreal: text direction flags)

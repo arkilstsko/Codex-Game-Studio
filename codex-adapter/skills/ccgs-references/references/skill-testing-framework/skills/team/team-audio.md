@@ -17,7 +17,7 @@ engine is configured.
 
 ## Static Assertions (Structural)
 
-- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`, `allowed-tools`
+- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`
 - [ ] Has ≥2 step/phase headings
 - [ ] Contains verdict keywords: COMPLETE, BLOCKED
 - [ ] Contains "File Write Protocol" section
@@ -41,7 +41,7 @@ engine is configured.
 - GDD for the target feature exists at `design/gdd/combat.md`
 - Sound bible exists at `design/gdd/sound-bible.md`
 - Existing audio assets are listed in `assets/audio/`
-- Engine is configured in `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md`
+- Engine is configured in `../ccgs-references/references/docs/technical-preferences.md`
 - No accessibility gaps exist in the planned audio event list
 
 **Input:** `/team-audio combat`
@@ -64,8 +64,8 @@ engine is configured.
 - [ ] Sound bible is read during context gathering (before Step 1) when it exists
 - [ ] audio-director is spawned before sound-designer or accessibility-specialist
 - [ ] `request_user_input` appears after Step 1 output and before Step 2 launch
-- [ ] sound-designer and accessibility-specialist Task calls are issued simultaneously in Step 2
-- [ ] technical-artist and engine specialist Task calls are issued simultaneously in Step 3
+- [ ] sound-designer and accessibility-specialist role-reference passes are issued simultaneously in Step 2
+- [ ] technical-artist and engine specialist role-reference passes are issued simultaneously in Step 3
 - [ ] gameplay-programmer is not launched until Step 3 `request_user_input` is approved
 - [ ] Audio design document is written to `design/gdd/audio-combat.md` (not another path)
 - [ ] Summary includes audio event count and estimated asset count
@@ -154,14 +154,14 @@ engine is configured.
 ### Case 5: Engine Not Configured — Engine specialist step skipped gracefully
 
 **Fixture:**
-- Engine is NOT configured in `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md` (shows `[TO BE CONFIGURED]`)
+- Engine is NOT configured in `../ccgs-references/references/docs/technical-preferences.md` (shows `[TO BE CONFIGURED]`)
 - GDD for the target feature exists
 - Sound bible may or may not exist
 
 **Input:** `/team-audio boss encounter`
 
 **Expected behavior:**
-1. Context gathering: orchestrator reads `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md` and detects no engine is configured
+1. Context gathering: orchestrator reads `../ccgs-references/references/docs/technical-preferences.md` and detects no engine is configured
 2. Steps 1–2 proceed normally (audio-director, sound-designer, accessibility-specialist)
 3. Step 3: technical-artist is spawned normally; engine specialist spawn is SKIPPED
 4. Orchestrator notes in conversation: "Engine specialist not spawned — no engine configured in technical-preferences.md. Engine integration validation will be deferred until an engine is selected."
@@ -184,7 +184,7 @@ engine is configured.
 
 - [ ] Context gathering (GDDs, sound bible, asset list) runs before any agent is spawned
 - [ ] `request_user_input` is used after every step output before the next step launches
-- [ ] Parallel spawning: Step 2 (sound-designer + accessibility-specialist) and Step 3 (technical-artist + engine specialist) issue all Task calls before waiting for results
+- [ ] Parallel spawning: Step 2 (sound-designer + accessibility-specialist) and Step 3 (technical-artist + engine specialist) issue all role-reference passes before waiting for results
 - [ ] No files are written by the orchestrator directly — all writes are delegated to sub-agents
 - [ ] Each sub-agent enforces the "May I write to [path]?" protocol before any write
 - [ ] BLOCKED status from any agent is surfaced immediately — not silently skipped

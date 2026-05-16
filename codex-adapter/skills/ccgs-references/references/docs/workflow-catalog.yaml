@@ -32,7 +32,7 @@ phases:
         command: /setup-engine
         required: true
         artifact:
-          glob: "~/.codex/skills/ccgs-references/references/docs/technical-preferences.md"
+          glob: "../ccgs-references/references/docs/technical-preferences.md"
           pattern: "Engine: [^[]"
         description: "Configure engine, pin version, set naming conventions and performance budgets"
 

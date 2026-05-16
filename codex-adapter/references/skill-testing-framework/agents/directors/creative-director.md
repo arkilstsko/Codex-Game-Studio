@@ -13,7 +13,7 @@
 Verified by reading the agent's `codex-studio/agents/creative-director.md` frontmatter:
 
 - [ ] `description:` field is present and domain-specific (references creative vision, pillars, GDD alignment — not generic)
-- [ ] `allowed-tools:` list is read-heavy; should not include Bash unless justified by a creative workflow need
+- [ ] `Codex capability notes:` list is read-heavy; should not include Bash unless justified by a creative workflow need
 - [ ] Model tier is Deep tier per coordination-rules.md (directors with gate synthesis = Deep)
 - [ ] Agent definition does not claim authority over technical architecture or production scheduling
 

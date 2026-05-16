@@ -1,10 +1,8 @@
 ---
 name: audio-director
 description: "The Audio Director owns the sonic identity of the game: music direction, sound design philosophy, audio implementation strategy, and mix balance. Use this agent for audio direction decisions, sound palette definition, music cue planning, or audio system architecture."
-tools: Read, Glob, Grep, Write, Edit, Web search
 reasoning-tier: Standard
 maxTurns: 20
-disallowedTools: Bash
 memory: project
 ---
 

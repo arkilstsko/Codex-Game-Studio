@@ -15,7 +15,7 @@ No director gates are used. The skill asks "May I write to
 
 Verified automatically by `/skill-test static` — no fixture needed.
 
-- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`, `allowed-tools`
+- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`
 - [ ] Has ≥2 phase headings
 - [ ] Contains verdict keyword: COMPLETE
 - [ ] Contains "May I write" language (skill writes patch notes file)
@@ -107,7 +107,7 @@ None. Patch notes generation is a fast compilation task; no gates are invoked.
 ### Case 4: Patch Note Template Exists — Used instead of generated structure
 
 **Fixture:**
-- `~/.codex/skills/ccgs-references/references/docs/templates/patch-notes-template.md` exists with a structured header format
+- `../ccgs-references/references/docs/templates/patch-notes-template.md` exists with a structured header format
 - `docs/CHANGELOG.md` exists with player-facing entries
 
 **Input:** `/patch-notes v0.4.0`

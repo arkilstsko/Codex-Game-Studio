@@ -15,8 +15,8 @@ Use the workflow below with these Codex mappings:
 - `Bash` means use `exec_command`.
 - `Web search` and `Web fetch` mean use Codex web/browser tools when available; prefer official engine documentation for engine lookups. If web tools are unavailable, ask the user for the source URL or state the limitation.
 - `request_user_input` means use Codex's structured input tool when available: at most 3 questions, 2-3 choices per question, no multi-select. Otherwise ask concise plain-text questions.
-- Installed reference root: `~/.codex/skills/ccgs-references/references`. In this repo, the same files are mirrored under `codex-adapter/references/`.
-- Role references are not native Codex agents. Simulate the named role locally using `references/agents/`; use Codex subagents only when the user explicitly asks for parallel agent work. Load matching memory from `references/agent-memory/` when it exists.
+- Installed reference root: `../ccgs-references/references`. In this repo, the same files are mirrored under `codex-adapter/references/`.
+- Role references are not native Codex agents. Simulate the named role locally using `../ccgs-references/references/agents/`; use Codex subagents only when the user explicitly asks for parallel agent work. Load matching memory from `../ccgs-references/references/agent-memory/` when it exists.
 - Hook scripts and statusline settings from `references/hook-config.json` are reference checks. Treat them as reference checks unless you install separate Codex automation around them.
 
 When this skill writes project artifacts, keep the original CCGS directory conventions (`design/`, `docs/`, `production/`, `src/`, `tests/`, `prototypes/`) unless the target project already has a stronger convention.
@@ -48,7 +48,7 @@ Resolve the review mode (once, store for all gate spawns this run):
 2. Else read `production/review-mode.txt` → use that value
 3. Else → default to `lean`
 
-See `~/.codex/skills/ccgs-references/references/docs/director-gates.md` for the full check pattern.
+See `../ccgs-references/references/docs/director-gates.md` for the full check pattern.
 
 **Modes:**
 - `$ccgs-create-epics all` — process all systems in layer order
@@ -86,7 +86,7 @@ Read for in-scope systems:
 - Accepted ADRs **whose domains cover in-scope systems only** — read the "GDD Requirements Addressed", "Decision", and "Engine Compatibility" sections; skip ADRs for unrelated domains
 - `docs/architecture/control-manifest.md` — manifest version date from header
 - `docs/architecture/tr-registry.yaml` — for tracing requirements to ADR coverage
-- `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/VERSION.md` — engine name, version, risk levels
+- `docs/engine-reference/[engine]/VERSION.md` — engine name, version, risk levels
 
 Report: "Loaded [N] GDDs, [M] ADRs, engine: [name + version]."
 
@@ -147,7 +147,7 @@ Use `request_user_input`:
 - `lean` → skip (not a PHASE-GATE). Note: "PR-EPIC skipped — Lean mode." Proceed to Step 5 (write epic files).
 - `full` → spawn as normal.
 
-After all epics for the current layer are defined (Step 4 completed for all in-scope systems), and before writing any files, load the `producer` role reference and perform that role pass using gate **PR-EPIC** (`~/.codex/skills/ccgs-references/references/docs/director-gates.md`).
+After all epics for the current layer are defined (Step 4 completed for all in-scope systems), and before writing any files, load the `producer` role reference and perform that role pass using gate **PR-EPIC** (`../ccgs-references/references/docs/director-gates.md`).
 
 Pass: the full epic structure summary (all epics, their scope summaries, governing ADR counts), the layer being processed, milestone timeline and team capacity.
 

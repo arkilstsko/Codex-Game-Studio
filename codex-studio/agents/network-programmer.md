@@ -1,7 +1,6 @@
 ---
 name: network-programmer
 description: "The Network Programmer implements multiplayer networking: state replication, lag compensation, matchmaking, and network protocol design. Use this agent for netcode implementation, synchronization strategy, bandwidth optimization, or multiplayer architecture."
-tools: Read, Glob, Grep, Write, Edit, Bash
 reasoning-tier: Standard
 maxTurns: 20
 ---

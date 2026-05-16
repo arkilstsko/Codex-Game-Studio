@@ -3,7 +3,6 @@ name: test-setup
 description: "Scaffold the test framework and CI/CD pipeline for the project's engine. Creates the tests/ directory structure, engine-specific test runner configuration, and GitHub Actions workflow. Run once during Technical Setup phase before the first sprint begins."
 argument-hint: "[force]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Bash, Write
 reasoning-tier: Standard
 ---
 
@@ -25,7 +24,7 @@ A test framework installed at sprint four costs 3 sprints.
 ## Phase 1: Detect Engine and Existing State
 
 1. **Read engine config**:
-   - Read `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md` and extract the `Engine:` value.
+   - Read `../ccgs-references/references/docs/technical-preferences.md` and extract the `Engine:` value.
    - If engine is not configured (`[TO BE CONFIGURED]`), stop:
      "Engine not configured. Run `/setup-engine` first, then re-run `/test-setup`."
 
@@ -233,7 +232,7 @@ jobs:
       - name: Run GdUnit4 Tests
         uses: MikeSchulze/gdUnit4-action@v1
         with:
-          godot-version: '[VERSION FROM ~/.codex/skills/ccgs-references/references/docs/engine-reference/godot/VERSION.md]'
+          godot-version: '[VERSION FROM docs/engine-reference/godot/VERSION.md]'
           paths: |
             tests/unit
             tests/integration

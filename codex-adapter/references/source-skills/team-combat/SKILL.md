@@ -3,7 +3,6 @@ name: team-combat
 description: "Orchestrate the combat team: coordinates game-designer, gameplay-programmer, ai-programmer, technical-artist, sound-designer, and qa-tester to design, implement, and validate a combat feature end-to-end."
 argument-hint: "[combat feature description] [--review full|lean|solo]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write, Edit, Bash, request_user_input, TodoWrite
 reasoning-tier: Standard
 ---
 **Argument check:** If no combat feature description is provided, output:

@@ -24,7 +24,7 @@ system differs by mode.
 
 Verified automatically by `/skill-test static` — no fixture needed.
 
-- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`, `allowed-tools`
+- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`
 - [ ] Has ≥2 phase headings
 - [ ] Contains verdicts: COMPLIANT, NON-COMPLIANT, WARNINGS (static mode); PASS, FAIL, PARTIAL (spec mode); COMPLETE (audit mode)
 - [ ] Does NOT contain "May I write" language (skill is read-only in all modes)
@@ -69,17 +69,17 @@ None. `/skill-test` is a meta-utility skill. No director gates apply.
 
 ---
 
-### Case 2: Static Mode — Skill Missing "May I Write" Despite Write Tool in allowed-tools
+### Case 2: Static Mode — Skill Missing "May I Write" Despite Write Tool in Codex capability notes
 
 **Fixture:**
-- `codex-studio/skills/some-skill/SKILL.md` has `Write` in `allowed-tools` frontmatter
+- `codex-studio/skills/some-skill/SKILL.md` has `Write` in Codex capability notes frontmatter
 - The skill body has no "May I write" or "May I update" language
 
 **Input:** `/skill-test static some-skill`
 
 **Expected behavior:**
 1. Skill reads `some-skill/SKILL.md`
-2. Check 4 (collaborative write protocol) fails: `Write` in allowed-tools but no
+2. Check 4 (collaborative write protocol) fails: `Write` in Codex capability notes but no
    "May I write" language found
 3. All other checks may pass
 4. Verdict is NON-COMPLIANT with Check 4 as the failing assertion

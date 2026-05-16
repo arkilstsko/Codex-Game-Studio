@@ -16,7 +16,7 @@ with verdict COMPLETE / BLOCKED and handoffs to `/ux-review`, `/code-review`,
 
 ## Static Assertions (Structural)
 
-- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`, `allowed-tools`
+- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`
 - [ ] Has ≥2 phase headings (Phase 1a through Phase 5 are all present)
 - [ ] Contains verdict keywords: COMPLETE, BLOCKED
 - [ ] Contains "May I write" or "File Write Protocol" — writes delegated to sub-agents and sub-skills, orchestrator does not write files directly
@@ -40,7 +40,7 @@ with verdict COMPLETE / BLOCKED and handoffs to `/ux-review`, `/code-review`,
 - `design/player-journey.md` exists
 - `design/ux/interaction-patterns.md` exists with relevant patterns
 - `design/accessibility-requirements.md` exists with committed tier (e.g., Enhanced)
-- Engine UI specialist configured in `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md`
+- Engine UI specialist configured in `../ccgs-references/references/docs/technical-preferences.md`
 
 **Input:** `/team-ui inventory screen`
 
@@ -129,7 +129,7 @@ with verdict COMPLETE / BLOCKED and handoffs to `/ux-review`, `/code-review`,
 
 **Expected behavior:**
 1. Phase 4 begins after implementation is confirmed complete
-2. Three Task calls issued simultaneously: ux-designer, art-director, accessibility-specialist
+2. Three role-reference passes issued simultaneously: ux-designer, art-director, accessibility-specialist
 3. Each stream operates independently:
    - ux-designer: verifies implementation matches wireframes, tests keyboard-only and gamepad-only navigation, checks accessibility features function
    - art-director: verifies visual consistency with art bible at minimum and maximum supported resolutions
@@ -138,7 +138,7 @@ with verdict COMPLETE / BLOCKED and handoffs to `/ux-review`, `/code-review`,
 5. `request_user_input` presents all three review results before Phase 5 begins
 
 **Assertions:**
-- [ ] All three Task calls issued before any result is awaited (parallel, not sequential)
+- [ ] All three role-reference passes issued before any result is awaited (parallel, not sequential)
 - [ ] Phase 5 does NOT begin until all three Phase 4 agents have returned
 - [ ] Accessibility-specialist explicitly reads `design/accessibility-requirements.md` for the committed tier
 - [ ] Accessibility violations flagged as BLOCKING (not merely advisory)
@@ -179,7 +179,7 @@ with verdict COMPLETE / BLOCKED and handoffs to `/ux-review`, `/code-review`,
 
 - [ ] `request_user_input` used at each phase transition — user approves before pipeline advances
 - [ ] UX Review Gate (Phase 1c) is blocking — Phase 2 cannot begin without APPROVED or explicit user override
-- [ ] All file writes delegated to sub-agents and sub-skills — orchestrator does not call Write or Edit directly
+- [ ] All file writes delegated to sub-agents and sub-skills — orchestrator does not call explicit write or edit instructions directly
 - [ ] Phase 4 agents launched in parallel per skill spec
 - [ ] Error Recovery Protocol followed: surface → assess → offer options → partial report
 - [ ] Partial report always produced even when agents are BLOCKED

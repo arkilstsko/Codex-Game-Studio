@@ -15,8 +15,8 @@ Use the workflow below with these Codex mappings:
 - `Bash` means use `exec_command`.
 - `Web search` and `Web fetch` mean use Codex web/browser tools when available; prefer official engine documentation for engine lookups. If web tools are unavailable, ask the user for the source URL or state the limitation.
 - `request_user_input` means use Codex's structured input tool when available: at most 3 questions, 2-3 choices per question, no multi-select. Otherwise ask concise plain-text questions.
-- Installed reference root: `~/.codex/skills/ccgs-references/references`. In this repo, the same files are mirrored under `codex-adapter/references/`.
-- Role references are not native Codex agents. Simulate the named role locally using `references/agents/`; use Codex subagents only when the user explicitly asks for parallel agent work. Load matching memory from `references/agent-memory/` when it exists.
+- Installed reference root: `../ccgs-references/references`. In this repo, the same files are mirrored under `codex-adapter/references/`.
+- Role references are not native Codex agents. Simulate the named role locally using `../ccgs-references/references/agents/`; use Codex subagents only when the user explicitly asks for parallel agent work. Load matching memory from `../ccgs-references/references/agent-memory/` when it exists.
 - Hook scripts and statusline settings from `references/hook-config.json` are reference checks. Treat them as reference checks unless you install separate Codex automation around them.
 
 When this skill writes project artifacts, keep the original CCGS directory conventions (`design/`, `docs/`, `production/`, `src/`, `tests/`, `prototypes/`) unless the target project already has a stronger convention.
@@ -45,7 +45,7 @@ Resolve the review mode once at startup (store for all gate spawns this run):
 2. Else read `production/review-mode.txt` → use that value
 3. Else → default to `lean`
 
-See `~/.codex/skills/ccgs-references/references/docs/director-gates.md` for the full check pattern and mode definitions.
+See `../ccgs-references/references/docs/director-gates.md` for the full check pattern and mode definitions.
 
 ---
 
@@ -348,7 +348,7 @@ Apply the review mode resolved in Phase 0 before spawning QL-STORY-READY:
 - `lean` → skip. Note: "QL-STORY-READY skipped — Lean mode." Proceed to close.
 - `full` → spawn as normal.
 
-Load the `qa-lead` role reference and perform that role pass using gate **QL-STORY-READY** (`~/.codex/skills/ccgs-references/references/docs/director-gates.md`).
+Load the `qa-lead` role reference and perform that role pass using gate **QL-STORY-READY** (`../ccgs-references/references/docs/director-gates.md`).
 
 Pass the following context:
 - Story title

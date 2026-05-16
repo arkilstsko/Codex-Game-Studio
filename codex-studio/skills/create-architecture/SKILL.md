@@ -3,7 +3,6 @@ name: create-architecture
 description: "Guided, section-by-section authoring of the master architecture document for the game. Reads all GDDs, the systems index, existing ADRs, and the engine reference library to produce a complete architecture blueprint before any code is written. Engine-version-aware: flags knowledge gaps and validates decisions against the pinned engine version."
 argument-hint: "[focus-area: full | layers | data-flow | api-boundaries | adr-audit] [--review full|lean|solo]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write, Bash, request_user_input
 reasoning-tier: Standard
 agent: technical-director
 ---
@@ -454,7 +453,7 @@ This skill follows the collaborative design principle at every phase:
    accumulate everything and write at the end. This survives session crashes.
 
 Never make a binding architectural decision without user input. If the user is
-unsure, present 2-4 options with pros/cons before asking them to decide.
+unsure, present 2-3 options with pros/cons before asking them to decide.
 
 ---
 

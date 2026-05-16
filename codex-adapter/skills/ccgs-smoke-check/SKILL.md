@@ -15,8 +15,8 @@ Use the workflow below with these Codex mappings:
 - `Bash` means use `exec_command`.
 - `Web search` and `Web fetch` mean use Codex web/browser tools when available; prefer official engine documentation for engine lookups. If web tools are unavailable, ask the user for the source URL or state the limitation.
 - `request_user_input` means use Codex's structured input tool when available: at most 3 questions, 2-3 choices per question, no multi-select. Otherwise ask concise plain-text questions.
-- Installed reference root: `~/.codex/skills/ccgs-references/references`. In this repo, the same files are mirrored under `codex-adapter/references/`.
-- Role references are not native Codex agents. Simulate the named role locally using `references/agents/`; use Codex subagents only when the user explicitly asks for parallel agent work. Load matching memory from `references/agent-memory/` when it exists.
+- Installed reference root: `../ccgs-references/references`. In this repo, the same files are mirrored under `codex-adapter/references/`.
+- Role references are not native Codex agents. Simulate the named role locally using `../ccgs-references/references/agents/`; use Codex subagents only when the user explicitly asks for parallel agent work. Load matching memory from `../ccgs-references/references/agent-memory/` when it exists.
 - Hook scripts and statusline settings from `references/hook-config.json` are reference checks. Treat them as reference checks unless you install separate Codex automation around them.
 
 When this skill writes project artifacts, keep the original CCGS directory conventions (`design/`, `docs/`, `production/`, `src/`, `tests/`, `prototypes/`) unless the target project already has a stronger convention.
@@ -70,7 +70,7 @@ Before running anything, understand the environment:
 2. **CI check**: check whether `.github/workflows/` contains a workflow file
    referencing tests. Note in the report whether CI is configured.
 
-3. **Engine detection**: read `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md` and
+3. **Engine detection**: read `../ccgs-references/references/docs/technical-preferences.md` and
    extract the `Engine:` value. Store this for test command selection in
    Phase 2.
 
@@ -127,7 +127,7 @@ If no matching log found: "UE automation tests must be run via the Session
 Frontend or CI pipeline. Please confirm test status manually."
 
 **Unknown engine / not configured:**
-"Engine not configured in `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md`. Run
+"Engine not configured in `../ccgs-references/references/docs/technical-preferences.md`. Run
 `$ccgs-setup-engine` to specify the engine, then re-run `$ccgs-smoke-check`."
 
 **If the test runner is not available in this environment** (engine binary not
@@ -203,7 +203,7 @@ Use `request_user_input` to batch-verify. Keep to at most 3 calls.
 **Batch 1 — Core stability (always run):**
 ```
 question: "Core stability — select any items that FAILED (leave all unselected if everything passed):"
-multiple-choice: true
+single-choice: true
 options:
   - "Game does not launch or crashes before reaching the main menu"
   - "New game / session fails to start"
@@ -216,7 +216,7 @@ For any selected item, ask the user to briefly describe what failed before gener
 **Batch 2 — Sprint changes and regression (always run):**
 ```
 question: "Sprint changes and regression — select any items that FAILED (leave all unselected if everything passed):"
-multiple-choice: true
+single-choice: true
 options:
   - "[Primary mechanic this sprint] — FAILED"
   - "[Second notable change this sprint, if any] — FAILED"
@@ -229,7 +229,7 @@ For any selected item, ask the user to briefly describe what broke before genera
 **Batch 3 — Data integrity and performance (run unless `quick` argument):**
 ```
 question: "Data integrity and performance — select any items that FAILED or were skipped (leave all unselected if everything passed):"
-multiple-choice: true
+single-choice: true
 options:
   - "Save / load — FAILED (data loss or corruption observed)"
   - "Save / load — N/A (save system not yet implemented)"
@@ -246,7 +246,7 @@ Record each response verbatim for the Phase 5 report.
 **PC platform** (`--platform pc` or `--platform all`):
 ```
 question: "PC Platform — select any items that FAILED (leave all unselected if everything passed):"
-multiple-choice: true
+single-choice: true
 options:
   - "Keyboard controls — FAILED (describe issue after)"
   - "Mouse input or cursor visibility — FAILED (describe issue after)"
@@ -259,7 +259,7 @@ For any selected item, ask the user to briefly describe what failed before gener
 **Console platform** (`--platform console` or `--platform all`):
 ```
 question: "Console Platform — select any items that FAILED (leave all unselected if everything passed):"
-multiple-choice: true
+single-choice: true
 options:
   - "Gamepad input — FAILED (describe issue after)"
   - "UI outside TV safe zone / text clipped — FAILED (describe what is clipped after)"
@@ -272,7 +272,7 @@ For any selected item, ask the user to briefly describe what failed before gener
 **Mobile platform** (`--platform mobile` or `--platform all`):
 ```
 question: "Mobile Platform — select any items that FAILED (leave all unselected if everything passed):"
-multiple-choice: true
+single-choice: true
 options:
   - "Touch controls — FAILED (describe issue after)"
   - "Orientation change (portrait ↔ landscape) — FAILED (describe what breaks after)"

@@ -3,7 +3,6 @@ name: setup-engine
 description: "Configure the project's game engine and version. Pins the engine in AGENTS.md, detects knowledge gaps, and populates engine reference docs via Web search when the version is beyond the LLM's training data."
 argument-hint: "[engine] | [engine version] | refresh | upgrade [old-version] [new-version] | no args for guided selection"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write, Edit, Web search, Web fetch, request_user_input
 reasoning-tier: Standard
 ---
 
@@ -172,7 +171,7 @@ Update the Technology Stack section, replacing the `[CHOOSE]` placeholders with 
 
 ## 5. Populate Technical Preferences
 
-After updating AGENTS.md, create or update `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md` with
+After updating AGENTS.md, create or update `../ccgs-references/references/docs/technical-preferences.md` with
 engine-appropriate defaults. Read the existing template first, then fill in:
 
 ### Engine & Language Section
@@ -326,7 +325,7 @@ Inform the user which category they're in and why.
 
 ### If WITHIN training data (LOW RISK):
 
-Create a minimal `~/.codex/skills/ccgs-references/references/docs/engine-reference/<engine>/VERSION.md`:
+Create a minimal `docs/engine-reference/<engine>/VERSION.md`:
 
 ```markdown
 # [Engine] — Version Reference
@@ -364,13 +363,13 @@ Create the full reference doc set by searching the web:
    - Deprecated APIs with replacements
    - New features and best practices
 
-Ask: "May I create the engine reference docs under `~/.codex/skills/ccgs-references/references/docs/engine-reference/<engine>/`?"
+Ask: "May I create the engine reference docs under `docs/engine-reference/<engine>/`?"
 
 Wait for confirmation before writing any files.
 
 3. **Create the full reference directory**:
    ```
-   ~/.codex/skills/ccgs-references/references/docs/engine-reference/<engine>/
+   docs/engine-reference/<engine>/
    ├── VERSION.md              # Version pin + knowledge gap analysis
    ├── breaking-changes.md     # Version-by-version breaking changes
    ├── deprecated-apis.md      # "Don't use X → Use Y" tables
@@ -397,7 +396,7 @@ correct engine:
 ```markdown
 ## Engine Version Reference
 
-@~/.codex/skills/ccgs-references/references/docs/engine-reference/<engine>/VERSION.md
+@docs/engine-reference/<engine>/VERSION.md
 ```
 
 If the previous import pointed to a different engine (e.g., switching from
@@ -414,7 +413,7 @@ For the chosen engine's specialist agents, verify they have a
 the existing Godot specialist agents.
 
 The section should instruct the agent to:
-1. Read `~/.codex/skills/ccgs-references/references/docs/engine-reference/<engine>/VERSION.md`
+1. Read `docs/engine-reference/<engine>/VERSION.md`
 2. Check deprecated APIs before suggesting code
 3. Check breaking changes for relevant version transitions
 4. Use Web search to verify uncertain APIs
@@ -425,7 +424,7 @@ The section should instruct the agent to:
 
 If invoked as `/setup-engine refresh`:
 
-1. Read the existing `~/.codex/skills/ccgs-references/references/docs/engine-reference/<engine>/VERSION.md` to get
+1. Read the existing `docs/engine-reference/<engine>/VERSION.md` to get
    the current engine and version
 2. Use Web search to check for:
    - New engine releases since last verification
@@ -443,7 +442,7 @@ If invoked as `/setup-engine upgrade [old-version] [new-version]`:
 
 ### Step 1 — Read Current Version State
 
-Read `~/.codex/skills/ccgs-references/references/docs/engine-reference/<engine>/VERSION.md` to confirm the current pinned
+Read `docs/engine-reference/<engine>/VERSION.md` to confirm the current pinned
 version, risk level, and any migration note URLs already recorded. If
 `old-version` was not provided as an argument, use the pinned version from this
 file.
@@ -510,7 +509,7 @@ Wait for explicit confirmation before continuing.
 
 After confirmation:
 
-1. Update `~/.codex/skills/ccgs-references/references/docs/engine-reference/<engine>/VERSION.md`:
+1. Update `docs/engine-reference/<engine>/VERSION.md`:
    - `Engine Version` → `[new-version]`
    - `Project Pinned` → today's date
    - `Last Docs Verified` → today's date
@@ -558,7 +557,7 @@ Tech Prefs:      [created/updated]
 Agent Config:    [verified]
 
 Next Steps:
-1. Review ~/.codex/skills/ccgs-references/references/docs/engine-reference/<engine>/VERSION.md
+1. Review docs/engine-reference/<engine>/VERSION.md
 2. [If from /brainstorm] Run /map-systems to decompose your concept into individual systems
 3. [If from /brainstorm] Run /design-system to author per-system GDDs (guided, section-by-section)
 4. [If from /brainstorm] Run /prototype [core-mechanic] to validate the core idea before writing GDDs

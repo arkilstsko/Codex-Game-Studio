@@ -3,7 +3,6 @@ name: story-done
 description: "End-of-story completion review. Reads the story file, verifies each acceptance criterion against the implementation, checks for GDD/ADR deviations, prompts code review, updates story status to Complete, and surfaces the next ready story from the sprint."
 argument-hint: "[story-file-path] [--review full|lean|solo]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Bash, Write, Edit, request_user_input
 reasoning-tier: Standard
 ---
 
@@ -26,7 +25,7 @@ Resolve the review mode (once, store for all gate spawns this run):
 2. Else read `production/review-mode.txt` → use that value
 3. Else → default to `lean`
 
-See `~/.codex/skills/ccgs-references/references/docs/director-gates.md` for the full check pattern.
+See `../ccgs-references/references/docs/director-gates.md` for the full check pattern.
 
 **If a file path is provided** (e.g., `/story-done production/epics/core/story-damage-calculator.md`):
 read that file directly.
@@ -234,7 +233,7 @@ For each deviation found, categorize:
 - `lean` → skip (not a PHASE-GATE). Note: "QL-TEST-COVERAGE skipped — Lean mode." Proceed to Phase 5.
 - `full` → spawn as normal.
 
-After completing the deviation checks in Phase 4, load the `qa-lead` role reference and perform that role pass using gate **QL-TEST-COVERAGE** (`~/.codex/skills/ccgs-references/references/docs/director-gates.md`).
+After completing the deviation checks in Phase 4, load the `qa-lead` role reference and perform that role pass using gate **QL-TEST-COVERAGE** (`../ccgs-references/references/docs/director-gates.md`).
 
 Pass:
 - The story file path and story type
@@ -266,7 +265,7 @@ Skip this phase for Config/Data stories (no code tests required).
   - Record the answer in the completion notes (Phase 7). All three options proceed to Phase 6.
 - `full` → spawn as normal.
 
-Load the `lead-programmer` role reference and perform that role pass using gate **LP-CODE-REVIEW** (`~/.codex/skills/ccgs-references/references/docs/director-gates.md`).
+Load the `lead-programmer` role reference and perform that role pass using gate **LP-CODE-REVIEW** (`../ccgs-references/references/docs/director-gates.md`).
 
 Pass: implementation file paths, story file path, relevant GDD section, governing ADR.
 

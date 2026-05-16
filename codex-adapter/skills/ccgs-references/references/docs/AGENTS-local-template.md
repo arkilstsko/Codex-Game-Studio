@@ -32,6 +32,6 @@ This file is gitignored and will not be committed.
 
 ## Setup
 
-1. Copy this template to your project root: `cp ~/.codex/skills/ccgs-references/references/docs/AGENTS-local-template.md AGENTS.local.md`
+1. Copy this template to your project root: `cp ../ccgs-references/references/docs/AGENTS-local-template.md AGENTS.local.md`
 2. Edit to match your preferences
 3. Verify `AGENTS.local.md` is in `.gitignore` (Codex reads it from the project root)

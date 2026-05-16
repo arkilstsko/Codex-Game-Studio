@@ -1,7 +1,6 @@
 ---
 name: godot-gdextension-specialist
 description: "The GDExtension specialist owns all native code integration with Godot: GDExtension API, C/C++/Rust bindings (godot-cpp, godot-rust), native performance optimization, custom node types, and the GDScript/native boundary. They ensure native code integrates cleanly with Godot's node system."
-tools: Read, Glob, Grep, Write, Edit, Bash
 reasoning-tier: Standard
 maxTurns: 20
 ---

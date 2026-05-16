@@ -3,7 +3,6 @@ name: team-narrative
 description: "Orchestrate the narrative team: coordinates narrative-director, writer, world-builder, and level-designer to create cohesive story content, world lore, and narrative-driven level design."
 argument-hint: "[narrative content description] [--review full|lean|solo]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write, Edit, request_user_input, TodoWrite
 reasoning-tier: Standard
 ---
 If no argument is provided, output usage guidance and exit without spawning any agents:

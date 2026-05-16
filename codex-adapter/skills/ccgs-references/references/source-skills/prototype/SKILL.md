@@ -3,7 +3,6 @@ name: prototype
 description: "Concept prototype — validate the core idea is worth designing before writing GDDs. Run right after /brainstorm and /setup-engine. Routes to HTML, Engine, or Paper path based on game type. Produces a throwaway build and a PROCEED/PIVOT/KILL verdict."
 argument-hint: "[concept-description] [--path html|engine|paper] [--review full|lean|solo] [--spike]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write, Edit, Bash, request_user_input
 reasoning-tier: Standard
 agent: prototyper
 isolation: worktree
@@ -94,7 +93,7 @@ Read `design/gdd/game-concept.md` if it exists. Extract:
 - Core fantasy (what the player is supposed to feel)
 - Core loop (the moment-to-moment action being tested)
 
-Read `AGENTS.md` and `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md` for the engine and
+Read `AGENTS.md` and `../ccgs-references/references/docs/technical-preferences.md` for the engine and
 language in use.
 
 ---
@@ -396,7 +395,7 @@ Vague ones make it useless.
 
 ## Phase 7: Generate Prototype Report
 
-Read `~/.codex/skills/ccgs-references/references/docs/templates/prototype-report.md` to get the report structure.
+Read `../ccgs-references/references/docs/templates/prototype-report.md` to get the report structure.
 Fill in every section based on what was observed during this session. Replace all
 placeholder text with real observations — no generic filler.
 

@@ -37,7 +37,7 @@ with high-stakes output; otherwise use the default Standard tier.
 This project uses two distinct multi-agent patterns:
 
 ### Subagents (current, always active)
-Spawned via `Task` within a single Codex session. Used by all `team-*` skills
+Performed as role-reference passes within a single Codex session. Used by all `team-*` skills
 and orchestration skills. Subagents share the session's permission context, run
 sequentially or in parallel within the session, and return results to the parent.
 

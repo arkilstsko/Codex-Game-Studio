@@ -3,7 +3,6 @@ name: smoke-check
 description: "Run the critical path smoke test gate before QA hand-off. Executes the automated test suite, verifies core functionality, and produces a PASS/FAIL report. Run after a sprint's stories are implemented and before manual QA begins. A failed smoke check means the build is not ready for QA."
 argument-hint: "[sprint | quick | --platform pc|console|mobile|all]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Bash, Write, request_user_input
 reasoning-tier: Standard
 ---
 
@@ -54,7 +53,7 @@ Before running anything, understand the environment:
 2. **CI check**: check whether `.github/workflows/` contains a workflow file
    referencing tests. Note in the report whether CI is configured.
 
-3. **Engine detection**: read `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md` and
+3. **Engine detection**: read `../ccgs-references/references/docs/technical-preferences.md` and
    extract the `Engine:` value. Store this for test command selection in
    Phase 2.
 
@@ -111,7 +110,7 @@ If no matching log found: "UE automation tests must be run via the Session
 Frontend or CI pipeline. Please confirm test status manually."
 
 **Unknown engine / not configured:**
-"Engine not configured in `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md`. Run
+"Engine not configured in `../ccgs-references/references/docs/technical-preferences.md`. Run
 `/setup-engine` to specify the engine, then re-run `/smoke-check`."
 
 **If the test runner is not available in this environment** (engine binary not
@@ -187,7 +186,7 @@ Use `request_user_input` to batch-verify. Keep to at most 3 calls.
 **Batch 1 — Core stability (always run):**
 ```
 question: "Core stability — select any items that FAILED (leave all unselected if everything passed):"
-multiple-choice: true
+single-choice: true
 options:
   - "Game does not launch or crashes before reaching the main menu"
   - "New game / session fails to start"
@@ -200,7 +199,7 @@ For any selected item, ask the user to briefly describe what failed before gener
 **Batch 2 — Sprint changes and regression (always run):**
 ```
 question: "Sprint changes and regression — select any items that FAILED (leave all unselected if everything passed):"
-multiple-choice: true
+single-choice: true
 options:
   - "[Primary mechanic this sprint] — FAILED"
   - "[Second notable change this sprint, if any] — FAILED"
@@ -213,7 +212,7 @@ For any selected item, ask the user to briefly describe what broke before genera
 **Batch 3 — Data integrity and performance (run unless `quick` argument):**
 ```
 question: "Data integrity and performance — select any items that FAILED or were skipped (leave all unselected if everything passed):"
-multiple-choice: true
+single-choice: true
 options:
   - "Save / load — FAILED (data loss or corruption observed)"
   - "Save / load — N/A (save system not yet implemented)"
@@ -230,7 +229,7 @@ Record each response verbatim for the Phase 5 report.
 **PC platform** (`--platform pc` or `--platform all`):
 ```
 question: "PC Platform — select any items that FAILED (leave all unselected if everything passed):"
-multiple-choice: true
+single-choice: true
 options:
   - "Keyboard controls — FAILED (describe issue after)"
   - "Mouse input or cursor visibility — FAILED (describe issue after)"
@@ -243,7 +242,7 @@ For any selected item, ask the user to briefly describe what failed before gener
 **Console platform** (`--platform console` or `--platform all`):
 ```
 question: "Console Platform — select any items that FAILED (leave all unselected if everything passed):"
-multiple-choice: true
+single-choice: true
 options:
   - "Gamepad input — FAILED (describe issue after)"
   - "UI outside TV safe zone / text clipped — FAILED (describe what is clipped after)"
@@ -256,7 +255,7 @@ For any selected item, ask the user to briefly describe what failed before gener
 **Mobile platform** (`--platform mobile` or `--platform all`):
 ```
 question: "Mobile Platform — select any items that FAILED (leave all unselected if everything passed):"
-multiple-choice: true
+single-choice: true
 options:
   - "Touch controls — FAILED (describe issue after)"
   - "Orientation change (portrait ↔ landscape) — FAILED (describe what breaks after)"

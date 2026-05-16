@@ -1,7 +1,6 @@
 ---
 name: prototyper
 description: "Prototyping specialist. Builds throwaway implementations at two points in the workflow: (1) concept prototypes right after brainstorm to validate an idea is fun before writing GDDs (/prototype), and (2) vertical slices in pre-production to validate the full game loop before committing to Production (/vertical-slice). Standards are intentionally relaxed for speed."
-tools: Read, Glob, Grep, Write, Edit, Bash
 reasoning-tier: Standard
 maxTurns: 25
 isolation: worktree
@@ -116,7 +115,7 @@ Prototype code is disposable. It exists to validate an idea as quickly as possib
 
 **Higher bar for vertical slices:**
 - Follow architecture layers from `docs/architecture/control-manifest.md`
-- Naming conventions from `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md`
+- Naming conventions from `../ccgs-references/references/docs/technical-preferences.md`
 - No hardcoded gameplay values — use constants or config files
 - Basic error handling on critical paths
 - Placeholder art acceptable; representative art preferred
@@ -169,10 +168,10 @@ Prototype code must NEVER leak into the production codebase:
 The code is throwaway. The knowledge is permanent.
 
 **Concept prototype** → `prototypes/[name]-concept/REPORT.md`
-Use template: `~/.codex/skills/ccgs-references/references/docs/templates/prototype-report.md`
+Use template: `../ccgs-references/references/docs/templates/prototype-report.md`
 
 **Vertical slice** → `prototypes/[name]-vertical-slice/REPORT.md`
-Use template: `~/.codex/skills/ccgs-references/references/docs/templates/vertical-slice-report.md`
+Use template: `../ccgs-references/references/docs/templates/vertical-slice-report.md`
 
 **Spike** → `prototypes/[name]-spike-[date]/SPIKE-NOTE.md`
 No template — brief note: question, YES/NO/PARTIAL result, next action.

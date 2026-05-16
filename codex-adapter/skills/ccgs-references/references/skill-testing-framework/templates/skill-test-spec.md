@@ -14,10 +14,10 @@
 
 These should pass before any behavioral testing:
 
-- [ ] Frontmatter has all required fields (`name`, `description`, `argument-hint`, `user-invocable`, `allowed-tools`)
+- [ ] Frontmatter has all required fields (`name`, `description`, `argument-hint`, `user-invocable`)
 - [ ] 2+ phase headings found
 - [ ] At least one verdict keyword present (`PASS`, `FAIL`, `CONCERNS`, `APPROVED`, `BLOCKED`, `COMPLETE`, `READY`)
-- [ ] If `allowed-tools` includes Write/Edit: `"May I write"` language present
+- [ ] If Codex capability notes includes explicit write/edit instructions: `"May I write"` language present
 - [ ] Next-step handoff section present at end
 
 ---

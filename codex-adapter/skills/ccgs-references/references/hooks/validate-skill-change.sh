@@ -1,6 +1,6 @@
 #!/bin/bash
 # Codex PostToolUse hook: Advises running skill-test after skill file changes
-# Fires when any file inside ~/.codex/skills/ccgs-references/references/source-skills/ is written or edited.
+# Fires when any file inside ../ccgs-references/references/source-skills/ is written or edited.
 #
 # Exit behavior:
 #   exit 0 = advisory only (non-blocking)
@@ -20,13 +20,13 @@ fi
 # Normalize path separators (Windows backslash to forward slash)
 FILE_PATH=$(echo "$FILE_PATH" | sed 's|\\|/|g')
 
-# Only act on files inside ~/.codex/skills/ccgs-references/references/source-skills/
-if ! echo "$FILE_PATH" | grep -qE '(^|/)\~/.codex/skills/ccgs-references/references/source-skills/'; then
+# Only act on files inside ../ccgs-references/references/source-skills/
+if ! echo "$FILE_PATH" | grep -qE '(^|/)\../ccgs-references/references/source-skills/'; then
     exit 0
 fi
 
-# Extract skill name from path (~/.codex/skills/ccgs-references/references/source-skills/[skill-name]/SKILL.md)
-SKILL_NAME=$(echo "$FILE_PATH" | grep -oE '\~/.codex/skills/ccgs-references/references/source-skills/[^/]+' | sed 's|\~/.codex/skills/ccgs-references/references/source-skills/||')
+# Extract skill name from path (../ccgs-references/references/source-skills/[skill-name]/SKILL.md)
+SKILL_NAME=$(echo "$FILE_PATH" | grep -oE '\../ccgs-references/references/source-skills/[^/]+' | sed 's|\../ccgs-references/references/source-skills/||')
 
 if [ -z "$SKILL_NAME" ]; then
     exit 0

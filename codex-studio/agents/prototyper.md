@@ -1,7 +1,6 @@
 ---
 name: prototyper
 description: "Prototyping specialist. Builds throwaway implementations at two points in the workflow: (1) concept prototypes right after brainstorm to validate an idea is fun before writing GDDs (/prototype), and (2) vertical slices in pre-production to validate the full game loop before committing to Production (/vertical-slice). Standards are intentionally relaxed for speed."
-tools: Read, Glob, Grep, Write, Edit, Bash
 reasoning-tier: Standard
 maxTurns: 25
 isolation: worktree

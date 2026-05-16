@@ -3,7 +3,6 @@ name: create-control-manifest
 description: "After architecture is complete, produces a flat actionable rules sheet for programmers — what you must do, what you must never do, per system and per layer. Extracted from all Accepted ADRs, technical preferences, and engine reference docs. More immediately actionable than ADRs (which explain why)."
 argument-hint: "[update — regenerate from current ADRs]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write
 reasoning-tier: Standard
 agent: technical-director
 ---
@@ -31,15 +30,15 @@ status. Re-run whenever new ADRs are accepted or existing ADRs are revised.
 - Note the ADR number and title for every rule sourced
 
 ### Technical Preferences
-- Read `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md`
+- Read `../ccgs-references/references/docs/technical-preferences.md`
 - Extract: naming conventions, performance budgets, approved libraries/addons,
   forbidden patterns
 
 ### Engine Reference
-- Read `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/VERSION.md` for engine + version
-- Read `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/deprecated-apis.md` — these become
+- Read `docs/engine-reference/[engine]/VERSION.md` for engine + version
+- Read `docs/engine-reference/[engine]/deprecated-apis.md` — these become
   forbidden API entries
-- Read `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/current-best-practices.md` if it exists
+- Read `docs/engine-reference/[engine]/current-best-practices.md` if it exists
 
 Report: "Loaded [N] Accepted ADRs, engine: [name + version]."
 
@@ -130,7 +129,7 @@ Use `request_user_input`:
 - `lean` → skip. Note: "TD-MANIFEST skipped — Lean mode." Proceed to Phase 5.
 - `full` → spawn as normal.
 
-Load the `technical-director` role reference and perform that role pass using gate **TD-MANIFEST** (`~/.codex/skills/ccgs-references/references/docs/director-gates.md`).
+Load the `technical-director` role reference and perform that role pass using gate **TD-MANIFEST** (`../ccgs-references/references/docs/director-gates.md`).
 
 Pass: the Control Manifest Preview from Phase 4 (rule counts per layer, full extracted rule list), the list of ADRs covered, engine version, and any rules sourced from technical-preferences.md or engine reference docs.
 
@@ -258,7 +257,7 @@ rule, see the referenced ADR.
 ### Forbidden APIs ([engine version])
 These APIs are deprecated or unverified for [engine + version]:
 - `[api name]` — deprecated since [version] / unverified post-cutoff
-- Source: `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/deprecated-apis.md`
+- Source: `docs/engine-reference/[engine]/deprecated-apis.md`
 
 ### Cross-Cutting Constraints
 - [constraint that applies everywhere, regardless of layer]

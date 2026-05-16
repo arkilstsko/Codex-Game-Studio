@@ -20,7 +20,7 @@ LAUNCH READY, LAUNCH BLOCKED, or CONCERNS.
 
 Verified automatically by `/skill-test static` — no fixture needed.
 
-- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`, `allowed-tools`
+- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`
 - [ ] Has ≥2 phase headings
 - [ ] Contains verdict keywords: LAUNCH READY, LAUNCH BLOCKED, CONCERNS
 - [ ] Contains "May I write" collaborative protocol language before writing the checklist

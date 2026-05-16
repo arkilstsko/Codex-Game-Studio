@@ -11,7 +11,7 @@
 ## Static Assertions (Structural)
 
 - [ ] `description:` field is present and domain-specific (references release pipeline, certification, store submission)
-- [ ] `allowed-tools:` list matches the agent's role (Read/Write for production/releases/ directory; no game source or test tools)
+- [ ] `Codex capability notes:` list matches the agent's role (Read/Write for production/releases/ directory; no game source or test tools)
 - [ ] Model tier is Standard (default for operations specialists)
 - [ ] Agent definition does not claim authority over QA strategy, game design, or build infrastructure
 

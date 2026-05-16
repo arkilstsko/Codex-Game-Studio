@@ -21,7 +21,7 @@ any director gate agents (it IS the director-level review).
 
 Verified automatically by `/skill-test static` — no fixture needed.
 
-- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`, `allowed-tools`
+- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`
 - [ ] Has ≥5 phase headings (complex multi-phase skill)
 - [ ] Contains verdict keywords: CONSISTENT, MINOR ISSUES, MAJOR ISSUES
 - [ ] Does NOT require "May I write" language (read-only skill)

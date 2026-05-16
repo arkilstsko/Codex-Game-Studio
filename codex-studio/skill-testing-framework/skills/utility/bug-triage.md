@@ -19,7 +19,7 @@ prioritize which bugs to address next.
 
 Verified automatically by `/skill-test static` — no fixture needed.
 
-- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`, `allowed-tools`
+- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`
 - [ ] Has ≥2 phase headings
 - [ ] Contains verdict keyword: TRIAGED
 - [ ] Does NOT contain "May I write" language (skill is read-only)

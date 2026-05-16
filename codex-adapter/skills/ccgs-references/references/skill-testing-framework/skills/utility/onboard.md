@@ -19,7 +19,7 @@ always ONBOARDING COMPLETE — the skill is purely informational.
 
 Verified automatically by `/skill-test static` — no fixture needed.
 
-- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`, `allowed-tools`
+- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`
 - [ ] Has ≥2 phase headings
 - [ ] Contains verdict keyword: ONBOARDING COMPLETE
 - [ ] Does NOT contain "May I write" language (skill is read-only)

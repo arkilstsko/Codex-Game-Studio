@@ -3,7 +3,6 @@ name: propagate-design-change
 description: "When a GDD is revised, scans all ADRs and the traceability index to identify which architectural decisions are now potentially stale. Produces a change impact report and guides the user through resolution."
 argument-hint: "[path/to/changed-gdd.md]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write, Bash
 reasoning-tier: Standard
 agent: technical-director
 ---

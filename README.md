@@ -58,14 +58,14 @@ review, and verification.
 | **Agent memory** | 1 | Lead programmer memory reference carried into the installable bundle |
 | **Reference hooks** | 12 | Original validation scripts kept as reference checks |
 | **Rules** | 11 | Coding and design standards for gameplay, engine, AI, UI, networking, testing, narrative, shaders, and docs |
-| **Templates** | 40 | Document templates for GDDs, ADRs, UX specs, sprint plans, test plans, release notes, and more |
+| **Templates** | 41 | Document templates for GDDs, ADRs, UX specs, sprint plans, test plans, release notes, patch notes, and more |
 
 ## Installation
 
 Clone the repo:
 
 ```bash
-git clone https://github.com/<your-org-or-user>/Codex-Game-Studio.git my-game
+git clone https://github.com/arkilstsko/Codex-Game-Studio.git my-game
 cd my-game
 ```
 
@@ -129,7 +129,7 @@ Original slash commands map directly to Codex skills:
 /release-checklist  -> $ccgs-release-checklist
 ```
 
-All generated skills use the same rule: replace `$ccgs-command-name` with
+All generated skills use the same rule: replace `/command-name` with
 `$ccgs-command-name`.
 
 ## Studio Roles

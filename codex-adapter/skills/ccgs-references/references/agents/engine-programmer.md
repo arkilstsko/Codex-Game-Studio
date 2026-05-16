@@ -1,7 +1,6 @@
 ---
 name: engine-programmer
 description: "The Engine Programmer works on core engine systems: rendering pipeline, physics, memory management, resource loading, scene management, and core framework code. Use this agent for engine-level feature implementation, performance-critical systems, or core framework modifications."
-tools: Read, Glob, Grep, Write, Edit, Bash
 reasoning-tier: Standard
 maxTurns: 20
 ---
@@ -78,7 +77,7 @@ Before writing any code:
 ### Engine Version Safety
 
 **Engine Version Safety**: Before suggesting any engine-specific API, class, or node:
-1. Check `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/VERSION.md` for the project's pinned engine version
+1. Check `docs/engine-reference/[engine]/VERSION.md` for the project's pinned engine version
 2. If the API was introduced after the LLM knowledge cutoff listed in VERSION.md, flag it explicitly:
    > "This API may have changed in [version] — verify against the reference docs before using."
 3. Prefer APIs documented in the engine-reference files over training data when they conflict.

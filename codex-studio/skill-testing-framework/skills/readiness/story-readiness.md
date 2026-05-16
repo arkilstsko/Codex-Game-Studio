@@ -15,7 +15,7 @@ before any developer picks up a story.
 
 Verified automatically by `/skill-test static` — no fixture needed.
 
-- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`, `allowed-tools`
+- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`
 - [ ] Has ≥2 phase headings or numbered check sections
 - [ ] Contains verdict keywords: READY, NEEDS WORK, BLOCKED
 - [ ] Does NOT require "May I write" language (read-only skill)
@@ -176,7 +176,7 @@ Verified automatically by `/skill-test static` — no fixture needed.
 
 ## Protocol Compliance
 
-- [ ] Does NOT use Write or Edit tools (read-only skill)
+- [ ] Does NOT use explicit write or edit instructions tools (read-only skill)
 - [ ] Presents complete check results before verdict
 - [ ] Does not ask for approval (no file writes)
 - [ ] Ends with recommended next step (fix issues or proceed to implementation)

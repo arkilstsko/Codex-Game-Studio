@@ -13,7 +13,7 @@
 Verified by reading the agent's `codex-studio/agents/game-designer.md` frontmatter:
 
 - [ ] `description:` field is present and domain-specific (references core loop, progression, combat rules, economy, player-facing design — not generic)
-- [ ] `allowed-tools:` list is read-focused; includes Read for GDDs and design docs; no Bash unless design tooling requires it
+- [ ] `Codex capability notes:` list is read-focused; includes Read for GDDs and design docs; no Bash unless design tooling requires it
 - [ ] Model tier is Standard tier per coordination-rules.md
 - [ ] Agent definition does not claim authority over code implementation, visual art style, or standalone narrative lore decisions
 

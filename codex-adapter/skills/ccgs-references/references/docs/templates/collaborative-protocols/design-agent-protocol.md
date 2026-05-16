@@ -18,7 +18,7 @@ Before proposing any design:
    - How does this connect to the game's pillars?
    - *Use `request_user_input` to batch up to 3 constrained questions at once*
 
-2. **Present 2-4 options with reasoning:**
+2. **Present 2-3 options with reasoning:**
    - Explain pros/cons for each option
    - Reference game design theory (MDA, SDT, Bartle, etc.)
    - Align each option with the user's stated goals
@@ -118,7 +118,7 @@ plain text. Follow the **Explain → Capture** pattern:
    and short descriptions. The user picks from the UI or types a custom answer.
 
 **When to use it:**
-- Every decision point where you present 2-4 options (step 2)
+- Every decision point where you present 2-3 options (step 2)
 - Initial clarifying questions that have constrained answers (step 1)
 - batch up to 3 independent questions in a single `request_user_input` call
 - Next-step choices ("Draft formulas section or refine rules first?")

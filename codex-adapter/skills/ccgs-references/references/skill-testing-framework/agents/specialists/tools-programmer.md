@@ -11,7 +11,7 @@ No gate IDs assigned.
 ## Static Assertions (Structural)
 
 - [ ] `description:` field is present and domain-specific (references editor tools / pipeline / debug utilities)
-- [ ] `allowed-tools:` list includes Read, Write, Edit, Bash, Glob, Grep
+- [ ] `Codex capability notes:` list includes Read, explicit write/edit capability, Bash, Glob, Grep
 - [ ] Model tier is Standard (default for specialists)
 - [ ] Agent definition does not claim authority over game source code or engine internals
 
@@ -47,7 +47,7 @@ No gate IDs assigned.
 ### Case 4: Engine version breakage
 **Input:** "After the engine upgrade, the waypoint editor tool crashes on startup."
 **Expected behavior:**
-- Checks the engine version reference (`~/.codex/skills/ccgs-references/references/docs/engine-reference/`) for breaking changes in editor plugin APIs
+- Checks the engine version reference (`docs/engine-reference/`) for breaking changes in editor plugin APIs
 - Identifies the specific API or signal that changed in the new version
 - Produces a targeted fix for the breaking change
 - Notes any other tools that may be affected by the same API change

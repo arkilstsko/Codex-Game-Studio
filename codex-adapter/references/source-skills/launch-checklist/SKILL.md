@@ -3,7 +3,6 @@ name: launch-checklist
 description: "Complete launch readiness validation covering every department: code, content, store, marketing, community, infrastructure, legal, and go/no-go sign-offs."
 argument-hint: "[launch-date or 'dry-run']"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write
 reasoning-tier: Standard
 ---
 

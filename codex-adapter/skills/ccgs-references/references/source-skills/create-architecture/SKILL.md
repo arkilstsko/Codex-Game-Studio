@@ -3,7 +3,6 @@ name: create-architecture
 description: "Guided, section-by-section authoring of the master architecture document for the game. Reads all GDDs, the systems index, existing ADRs, and the engine reference library to produce a complete architecture blueprint before any code is written. Engine-version-aware: flags knowledge gaps and validates decisions against the pinned engine version."
 argument-hint: "[focus-area: full | layers | data-flow | api-boundaries | adr-audit] [--review full|lean|solo]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write, Bash, request_user_input
 reasoning-tier: Standard
 agent: technical-director
 ---
@@ -22,7 +21,7 @@ Resolve the review mode (once, store for all gate spawns this run):
 2. Else read `production/review-mode.txt` → use that value
 3. Else → default to `lean`
 
-See `~/.codex/skills/ccgs-references/references/docs/director-gates.md` for the full check pattern.
+See `../ccgs-references/references/docs/director-gates.md` for the full check pattern.
 
 **Argument modes:**
 - **No argument / `full`**: Full guided walkthrough — all sections, start to finish
@@ -41,15 +40,15 @@ Before anything else, load the full project context in this order:
 
 Read the engine reference library completely:
 
-1. `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/VERSION.md`
+1. `docs/engine-reference/[engine]/VERSION.md`
    → Extract: engine name, version, LLM cutoff, post-cutoff risk levels
-2. `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/breaking-changes.md`
+2. `docs/engine-reference/[engine]/breaking-changes.md`
    → Extract: all HIGH and MEDIUM risk changes
-3. `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/deprecated-apis.md`
+3. `docs/engine-reference/[engine]/deprecated-apis.md`
    → Extract: APIs to avoid
-4. `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/current-best-practices.md`
+4. `docs/engine-reference/[engine]/current-best-practices.md`
    → Extract: post-cutoff best practices that differ from training data
-5. All files in `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/modules/`
+5. All files in `docs/engine-reference/[engine]/modules/`
    → Extract: current API patterns per domain
 
 If no engine is configured, stop and prompt:
@@ -62,7 +61,7 @@ Read all approved design documents and extract technical requirements from each:
 
 1. `design/gdd/game-concept.md` — game pillars, genre, core loop
 2. `design/gdd/systems-index.md` — all systems, dependencies, priority tiers
-3. `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md` — naming conventions, performance budgets,
+3. `../ccgs-references/references/docs/technical-preferences.md` — naming conventions, performance budgets,
    allowed libraries, forbidden patterns
 4. **Every GDD in `design/gdd/`** — for each, extract technical requirements:
    - Data structures implied by the game rules
@@ -178,7 +177,7 @@ relevant module reference doc. If an API is post-cutoff, flag it:
 
 ```
 ⚠️  [ClassName.method()] — Godot 4.6 (post-cutoff, HIGH risk)
-    Verified against: ~/.codex/skills/ccgs-references/references/docs/engine-reference/godot/modules/[domain].md
+    Verified against: docs/engine-reference/godot/modules/[domain].md
     Behaviour confirmed: [yes / NEEDS VERIFICATION]
 ```
 
@@ -346,14 +345,14 @@ After writing the master architecture document, perform an explicit sign-off bef
 
 **Step 1 — Technical Director self-review** (this skill runs as technical-director):
 
-Apply gate **TD-ARCHITECTURE** (`~/.codex/skills/ccgs-references/references/docs/director-gates.md`) as a self-review. Check all four criteria from that gate definition against the completed document.
+Apply gate **TD-ARCHITECTURE** (`../ccgs-references/references/docs/director-gates.md`) as a self-review. Check all four criteria from that gate definition against the completed document.
 
 **Review mode check** — apply before spawning LP-FEASIBILITY:
 - `solo` → skip. Note: "LP-FEASIBILITY skipped — Solo mode." Proceed to Phase 8 handoff.
 - `lean` → skip (not a PHASE-GATE). Note: "LP-FEASIBILITY skipped — Lean mode." Proceed to Phase 8 handoff.
 - `full` → spawn as normal.
 
-**Step 2 — Load the `lead-programmer` role reference and perform that role pass using gate LP-FEASIBILITY (`~/.codex/skills/ccgs-references/references/docs/director-gates.md`):**
+**Step 2 — Load the `lead-programmer` role reference and perform that role pass using gate LP-FEASIBILITY (`../ccgs-references/references/docs/director-gates.md`):**
 
 Pass: architecture document path, technical requirements baseline summary, ADR list.
 
@@ -454,7 +453,7 @@ This skill follows the collaborative design principle at every phase:
    accumulate everything and write at the end. This survives session crashes.
 
 Never make a binding architectural decision without user input. If the user is
-unsure, present 2-4 options with pros/cons before asking them to decide.
+unsure, present 2-3 options with pros/cons before asking them to decide.
 
 ---
 

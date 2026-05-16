@@ -17,10 +17,10 @@ framework. It is self-contained and separate from any game project.
 
 ## Path conventions
 
-- Skill specs: `~/.codex/skills/ccgs-references/references/skill-testing-framework/skills/[category]/[name].md`
-- Agent specs: `~/.codex/skills/ccgs-references/references/skill-testing-framework/agents/[tier]/[name].md`
-- Catalog: `~/.codex/skills/ccgs-references/references/skill-testing-framework/catalog.yaml`
-- Rubric: `~/.codex/skills/ccgs-references/references/skill-testing-framework/quality-rubric.md`
+- Skill specs: `../ccgs-references/references/skill-testing-framework/skills/[category]/[name].md`
+- Agent specs: `../ccgs-references/references/skill-testing-framework/agents/[tier]/[name].md`
+- Catalog: `../ccgs-references/references/skill-testing-framework/catalog.yaml`
+- Rubric: `../ccgs-references/references/skill-testing-framework/quality-rubric.md`
 
 The `spec:` field in `catalog.yaml` is the authoritative path for each skill/agent spec.
 Always read it rather than guessing the path.
@@ -69,7 +69,7 @@ creative    → writer, world-builder, game-designer, economy-designer,
 ## Workflow for testing a skill
 
 1. Read `catalog.yaml` to get the skill's `spec:` path and `category:`
-2. Read the skill at `~/.codex/skills/ccgs-references/references/source-skills/[name]/SKILL.md`
+2. Read the skill at `../ccgs-references/references/source-skills/[name]/SKILL.md`
 3. Read the spec at the `spec:` path
 4. Evaluate assertions case by case
 5. Offer to write results to `results/` and update `catalog.yaml`

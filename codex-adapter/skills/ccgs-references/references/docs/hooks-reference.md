@@ -1,6 +1,8 @@
-# Active Hooks
+# Reference Hook Scripts
 
-Hooks are configured in `~/.codex/skills/ccgs-references/references/hook-config.json` and fire automatically:
+Hooks are documented in `../ccgs-references/references/hook-config.json` as reference scripts.
+Codex does not automatically load or run them unless you manually wire them into
+separate automation.
 
 | Hook | Event | Trigger | Action |
 | ---- | ----- | ------- | ------ |
@@ -13,9 +15,9 @@ Hooks are configured in `~/.codex/skills/ccgs-references/references/hook-config.
 | `post-compact.sh` | PostCompact | After compaction | Reminds Codex to restore session state from `active.md` checkpoint |
 | `notify.sh` | Notification | Notification event | Shows Windows toast notification via PowerShell |
 | `session-stop.sh` | Stop | Session ends | Summarizes accomplishments and updates session log |
-| `log-agent.sh` | SubagentStart | Agent spawned | Audit trail start — logs role pass invocation with timestamp |
-| `log-agent-stop.sh` | SubagentStop | Agent stops | Audit trail stop — completes role pass record |
-| `validate-skill-change.sh` | PostToolUse (Write/Edit) | Skill file changes | Advises running `/skill-test` after any `~/.codex/skills/ccgs-references/references/source-skills/` file is written or edited |
+| `log-agent.sh` | Manual/reference | Role pass starts | Audit trail start — logs role pass invocation with timestamp |
+| `log-agent-stop.sh` | Manual/reference | Role pass stops | Audit trail stop — completes role pass record |
+| `validate-skill-change.sh` | PostToolUse (Write/Edit) | Skill file changes | Advises running `/skill-test` after any `../ccgs-references/references/source-skills/` file is written or edited |
 
-Hook reference documentation: `~/.codex/skills/ccgs-references/references/docs/hooks-reference/`
-Hook input schema documentation: `~/.codex/skills/ccgs-references/references/docs/hooks-reference/hook-input-schemas.md`
+Hook reference documentation: `../ccgs-references/references/docs/hooks-reference/`
+Hook input schema documentation: `../ccgs-references/references/docs/hooks-reference/hook-input-schemas.md`

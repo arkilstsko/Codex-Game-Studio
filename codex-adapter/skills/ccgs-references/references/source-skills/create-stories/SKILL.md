@@ -3,7 +3,6 @@ name: create-stories
 description: "Break a single epic into implementable story files. Reads the epic, its GDD, governing ADRs, and control manifest. Each story embeds its GDD requirement TR-ID, ADR guidance, acceptance criteria, story type, and test evidence path. Run after /create-epics for each epic."
 argument-hint: "[epic-slug | epic-path] [--review full|lean|solo]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write, request_user_input
 reasoning-tier: Standard
 agent: lead-programmer
 ---
@@ -30,7 +29,7 @@ then Core, and so on — matching the dependency order.
 Extract `--review [full|lean|solo]` if present and store as the review mode
 override for this run. If not provided, read `production/review-mode.txt`
 (default `lean` if missing). This resolved mode applies to all gate spawns
-in this skill — apply the check pattern from `~/.codex/skills/ccgs-references/references/docs/director-gates.md`
+in this skill — apply the check pattern from `../ccgs-references/references/docs/director-gates.md`
 before every gate invocation.
 
 - `/create-stories [epic-slug]` — e.g. `/create-stories combat`
@@ -87,7 +86,7 @@ For each GDD acceptance criterion:
 2. Each group = one story
 3. Order stories: foundational behaviour first, edge cases last, UI last
 
-**Story sizing rule:** one story = one focused session (~2-4 hours). If a
+**Story sizing rule:** one story = one focused session (~2-3 hours). If a
 group of criteria would take longer, split into two stories.
 
 For each story, determine:
@@ -110,7 +109,7 @@ For each story, determine:
 - `lean` → skip (not a PHASE-GATE). Note: "QL-STORY-READY skipped — Lean mode." Proceed to Step 5 (present stories for review).
 - `full` → spawn as normal.
 
-After decomposing all stories (Step 4 complete) but before presenting them for write approval, load the `qa-lead` role reference and perform that role pass using gate **QL-STORY-READY** (`~/.codex/skills/ccgs-references/references/docs/director-gates.md`).
+After decomposing all stories (Step 4 complete) but before presenting them for write approval, load the `qa-lead` role reference and perform that role pass using gate **QL-STORY-READY** (`../ccgs-references/references/docs/director-gates.md`).
 
 Pass: the full story list with acceptance criteria, story types, and TR-IDs; the epic's GDD acceptance criteria for reference.
 

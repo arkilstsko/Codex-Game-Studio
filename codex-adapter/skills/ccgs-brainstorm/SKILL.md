@@ -15,8 +15,8 @@ Use the workflow below with these Codex mappings:
 - `Bash` means use `exec_command`.
 - `Web search` and `Web fetch` mean use Codex web/browser tools when available; prefer official engine documentation for engine lookups. If web tools are unavailable, ask the user for the source URL or state the limitation.
 - `request_user_input` means use Codex's structured input tool when available: at most 3 questions, 2-3 choices per question, no multi-select. Otherwise ask concise plain-text questions.
-- Installed reference root: `~/.codex/skills/ccgs-references/references`. In this repo, the same files are mirrored under `codex-adapter/references/`.
-- Role references are not native Codex agents. Simulate the named role locally using `references/agents/`; use Codex subagents only when the user explicitly asks for parallel agent work. Load matching memory from `references/agent-memory/` when it exists.
+- Installed reference root: `../ccgs-references/references`. In this repo, the same files are mirrored under `codex-adapter/references/`.
+- Role references are not native Codex agents. Simulate the named role locally using `../ccgs-references/references/agents/`; use Codex subagents only when the user explicitly asks for parallel agent work. Load matching memory from `../ccgs-references/references/agent-memory/` when it exists.
 - Hook scripts and statusline settings from `references/hook-config.json` are reference checks. Treat them as reference checks unless you install separate Codex automation around them.
 
 When this skill writes project artifacts, keep the original CCGS directory conventions (`design/`, `docs/`, `production/`, `src/`, `tests/`, `prototypes/`) unless the target project already has a stronger convention.
@@ -32,7 +32,7 @@ When this skill is invoked:
    2. Else read `production/review-mode.txt` → use that value
    3. Else → default to `lean`
 
-   See `~/.codex/skills/ccgs-references/references/docs/director-gates.md` for the full check pattern.
+   See `../ccgs-references/references/docs/director-gates.md` for the full check pattern.
 
 2. **Check for existing concept work**:
    - Read `design/gdd/game-concept.md` if it exists (resume, don't restart)
@@ -220,10 +220,10 @@ Repeat until the user selects [A] Lock these in.
 
 **After pillars and anti-pillars are agreed, spawn BOTH `creative-director` AND `art-director` using the role-reference workflow in parallel before moving to Phase 5. Issue both role-reference passes simultaneously — do not wait for one before starting the other.**
 
-- **`creative-director`** — gate **CD-PILLARS** (`~/.codex/skills/ccgs-references/references/docs/director-gates.md`)
+- **`creative-director`** — gate **CD-PILLARS** (`../ccgs-references/references/docs/director-gates.md`)
   Pass: full pillar set with design tests, anti-pillars, core fantasy, unique hook.
 
-- **`art-director`** — gate **AD-CONCEPT-VISUAL** (`~/.codex/skills/ccgs-references/references/docs/director-gates.md`)
+- **`art-director`** — gate **AD-CONCEPT-VISUAL** (`../ccgs-references/references/docs/director-gates.md`)
   Pass: game concept elevator pitch, full pillar set with design tests, target platform (if known), any reference games or visual touchstones the user mentioned.
 
 Collect both verdicts, then present them together using a two-tab `request_user_input`:
@@ -276,7 +276,7 @@ Ground the concept in reality:
 - `lean` → skip (not a PHASE-GATE). Note: "TD-FEASIBILITY skipped — Lean mode." Proceed directly to scope tier definition.
 - `full` → spawn as normal.
 
-**After identifying biggest technical risks, load the `technical-director` role reference and perform that role pass using gate TD-FEASIBILITY (`~/.codex/skills/ccgs-references/references/docs/director-gates.md`) before scope tiers are defined.**
+**After identifying biggest technical risks, load the `technical-director` role reference and perform that role pass using gate TD-FEASIBILITY (`../ccgs-references/references/docs/director-gates.md`) before scope tiers are defined.**
 
 Pass: core loop description, platform target, engine choice (or "undecided"), list of identified technical risks.
 
@@ -287,7 +287,7 @@ Present the assessment to the user. If HIGH RISK, offer to revisit scope before 
 - `lean` → skip (not a PHASE-GATE). Note: "PR-SCOPE skipped — Lean mode." Proceed to document generation.
 - `full` → spawn as normal.
 
-**After scope tiers are defined, load the `producer` role reference and perform that role pass using gate PR-SCOPE (`~/.codex/skills/ccgs-references/references/docs/director-gates.md`).**
+**After scope tiers are defined, load the `producer` role reference and perform that role pass using gate PR-SCOPE (`../ccgs-references/references/docs/director-gates.md`).**
 
 Pass: full vision scope, MVP definition, timeline estimate, team size.
 
@@ -296,7 +296,7 @@ Present the assessment to the user. If UNREALISTIC, offer to adjust the MVP defi
 ---
 
 4. **Generate the game concept document** using the template at
-   `~/.codex/skills/ccgs-references/references/docs/templates/game-concept.md`. Fill in ALL sections from the
+   `../ccgs-references/references/docs/templates/game-concept.md`. Fill in ALL sections from the
    brainstorm conversation, including the MDA analysis, player motivation
    profile, and flow state design sections.
 
@@ -319,7 +319,7 @@ After revising, show the updated section as a diff or clear before/after, then u
 Options: `[A] Yes — write it` / `[B] Revise another section`
 Repeat until the user selects [A].
 
-If yes, generate the document using the template at `~/.codex/skills/ccgs-references/references/docs/templates/game-concept.md`, fill in ALL sections from the brainstorm conversation, and write the file, creating directories as needed.
+If yes, generate the document using the template at `../ccgs-references/references/docs/templates/game-concept.md`, fill in ALL sections from the brainstorm conversation, and write the file, creating directories as needed.
 
 **Scope consistency rule**: The "Estimated Scope" field in the Core Identity table must match the full-vision timeline from the Scope Tiers section — not just say "Large (9+ months)". Write it as "Large (X–Y months, solo)" or "Large (X–Y months, team of N)" so the summary table is accurate.
 

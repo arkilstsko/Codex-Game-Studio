@@ -4,7 +4,9 @@
 from __future__ import annotations
 
 import re
+import shutil
 import sys
+import tempfile
 from pathlib import Path
 
 
@@ -108,6 +110,12 @@ def check_generated_runtime_text(errors: list[str]) -> None:
         "Do NOT simulate",
         "subagent_type:",
         "Task tool",
+        "Task agents",
+        "Task prompt",
+        "SUBAGENT",
+        "separate independent Codex session",
+        "spawning parallel Task agents",
+        "multiple-choice: true",
         "multiSelect",
         "multi-tab",
         "Batch up to 4",
@@ -128,6 +136,8 @@ def check_generated_runtime_text(errors: list[str]) -> None:
         ]
         if any(ref in text for ref in source_refs):
             errors.append(f"{rel(path)} contains source-tree reference instead of installed reference root")
+        if "~/.codex/skills/ccgs-references/references" in text:
+            errors.append(f"{rel(path)} hardcodes the default Codex skill install path")
 
     support_root = ROOT / "codex-adapter/skills/ccgs-references/references"
     for path in support_root.rglob("*"):
@@ -138,6 +148,29 @@ def check_generated_runtime_text(errors: list[str]) -> None:
             errors.append(f"{rel(path)} contains source-tree reference inside install bundle")
 
 
+def check_temp_install_resolution(errors: list[str]) -> None:
+    source_root = ROOT / "codex-adapter" / "skills"
+    with tempfile.TemporaryDirectory(prefix="cgs-validate-") as tmp:
+        install_root = Path(tmp)
+        for source in source_root.iterdir():
+            if source.is_dir():
+                shutil.copytree(source, install_root / source.name)
+        ref_root = install_root / "ccgs-references" / "references"
+        if not ref_root.exists():
+            errors.append("temp install missing ccgs-references/references")
+            return
+        required = [
+            ref_root / "agents" / "lead-programmer.md",
+            ref_root / "agent-memory" / "lead-programmer" / "MEMORY.md",
+            ref_root / "source-skills" / "dev-story" / "SKILL.md",
+            ref_root / "skill-testing-framework" / "catalog.yaml",
+            ref_root / "docs" / "engine-reference" / "godot" / "VERSION.md",
+        ]
+        for item in required:
+            if not item.exists():
+                errors.append(f"temp install missing reference file: {item.relative_to(install_root)}")
+
+
 def main() -> int:
     errors: list[str] = []
     check_counts(errors)
@@ -145,6 +178,7 @@ def main() -> int:
     check_references(errors)
     check_stale_text(errors)
     check_generated_runtime_text(errors)
+    check_temp_install_resolution(errors)
 
     if errors:
         print("Repo validation failed:")

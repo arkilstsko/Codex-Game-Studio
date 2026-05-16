@@ -17,10 +17,10 @@ framework. It is self-contained and separate from any game project.
 
 ## Path conventions
 
-- Skill specs: `Codex Skill Testing Framework/skills/[category]/[name].md`
-- Agent specs: `Codex Skill Testing Framework/agents/[tier]/[name].md`
-- Catalog: `Codex Skill Testing Framework/catalog.yaml`
-- Rubric: `Codex Skill Testing Framework/quality-rubric.md`
+- Skill specs: `codex-studio/skill-testing-framework/skills/[category]/[name].md`
+- Agent specs: `codex-studio/skill-testing-framework/agents/[tier]/[name].md`
+- Catalog: `codex-studio/skill-testing-framework/catalog.yaml`
+- Rubric: `codex-studio/skill-testing-framework/quality-rubric.md`
 
 The `spec:` field in `catalog.yaml` is the authoritative path for each skill/agent spec.
 Always read it rather than guessing the path.

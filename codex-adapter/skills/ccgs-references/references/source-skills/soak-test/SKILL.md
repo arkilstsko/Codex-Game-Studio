@@ -3,7 +3,6 @@ name: soak-test
 description: "Generate a soak test protocol for extended play sessions. Defines what to observe, measure, and log during long play sessions to surface slow leaks, fatigue effects, and edge cases that only appear after sustained play. Primarily used in Polish and Release phases."
 argument-hint: "[duration: 30m | 1h | 2h | 4h] [focus: memory | stability | balance | all]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write
 reasoning-tier: Standard
 ---
 
@@ -53,7 +52,7 @@ human does the actual playing.**
 ## 2. Load Context
 
 Read:
-- `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md` — engine (for engine-specific memory
+- `../ccgs-references/references/docs/technical-preferences.md` — engine (for engine-specific memory
   monitoring guidance), performance budgets (memory ceiling, target FPS)
 - `design/gdd/game-concept.md` — intended session length (for comparison against
   soak duration), core loop description

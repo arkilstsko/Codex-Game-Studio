@@ -19,7 +19,7 @@ no files are written.
 
 Verified automatically by `/skill-test static` — no fixture needed.
 
-- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`, `allowed-tools`
+- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`
 - [ ] Has ≥2 phase headings
 - [ ] Contains verdict keywords: APPROVED, NEEDS REVISION, MAJOR REVISION NEEDED
 - [ ] Does NOT require "May I write" language (read-only skill)
@@ -46,7 +46,7 @@ In `solo` mode: both gates are skipped with equivalent notes.
 
 **Fixture:**
 - `docs/architecture/architecture.md` exists with all 8 required sections populated
-- All sections reference the correct engine version from `~/.codex/skills/ccgs-references/references/docs/engine-reference/`
+- All sections reference the correct engine version from `docs/engine-reference/`
 - No contradictions with existing Accepted ADRs in `docs/architecture/`
 - `production/session-state/review-mode.txt` contains `full`
 
@@ -186,7 +186,7 @@ In `solo` mode: both gates are skipped with equivalent notes.
 
 - The 8 required architecture sections are project-specific; tests use the
   section list defined in the skill body — not re-enumerated here.
-- Engine version compatibility checking (cross-referencing `~/.codex/skills/ccgs-references/references/docs/engine-reference/`)
+- Engine version compatibility checking (cross-referencing `docs/engine-reference/`)
   is part of Case 1's happy path but not independently fixture-tested.
 - RTM (requirement traceability matrix) mode is a separate concern covered by
   the `/architecture-review` skill's own `rtm` argument mode, not tested here.

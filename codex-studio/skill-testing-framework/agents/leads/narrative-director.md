@@ -13,7 +13,7 @@
 Verified by reading the agent's `codex-studio/agents/narrative-director.md` frontmatter:
 
 - [ ] `description:` field is present and domain-specific (references story, character, world-building, consistency — not generic)
-- [ ] `allowed-tools:` list is read-focused; includes Read for lore documents, GDDs, and narrative docs; no Bash unless justified
+- [ ] `Codex capability notes:` list is read-focused; includes Read for lore documents, GDDs, and narrative docs; no Bash unless justified
 - [ ] Model tier is Standard tier per coordination-rules.md
 - [ ] Agent definition does not claim authority over visual style, technical systems, or production scheduling
 

@@ -11,9 +11,12 @@ not supported.
 
 Use GitHub's private vulnerability reporting instead:
 
-Use the private vulnerability reporting link for the repository where this
-project is hosted. Maintainers should enable GitHub private vulnerability
-reporting under **Settings -> Security -> Code security and analysis**.
+https://github.com/arkilstsko/Codex-Game-Studio/security/advisories/new
+
+Maintainers should enable GitHub private vulnerability reporting under
+**Settings -> Security -> Code security and analysis**. If that channel is not
+available for this fork, contact the repository maintainer privately before
+posting any details publicly.
 
 Include as much detail as possible:
 - Description of the vulnerability and what it affects
@@ -22,15 +25,17 @@ Include as much detail as possible:
 - Any suggested mitigations
 
 **What to expect:**
-- Acknowledgment within **48 hours**
-- Status update within **7 days**
-- Resolution within **90 days** for confirmed vulnerabilities
+- Maintainers aim to acknowledge reports within **48 hours**
+- Maintainers aim to provide a status update within **7 days**
+- Confirmed vulnerabilities are prioritized for a fix or documented mitigation
 
 ## What Is In Scope
 
-Codex Game Studio is a **local development tool** — it installs shell hooks and coordinates
-AI agents that run directly on your machine. Security issues are primarily about
-contributed code that executes in users' environments without their awareness.
+Codex Game Studio is a **local development tool** that ships reference hook
+scripts and role-driven AI workflows. The hook scripts do not run unless a user
+or maintainer manually wires them into automation. Security issues are primarily
+about contributed code or instructions that execute in users' environments
+without their awareness.
 
 ### High Severity
 - Hooks (`codex-studio/hooks/*.sh`) that execute malicious or undisclosed shell

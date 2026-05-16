@@ -3,7 +3,6 @@ name: map-systems
 description: "Decompose a game concept into individual systems, map dependencies, prioritize design order, and create the systems index."
 argument-hint: "[next | system-name] [--review full|lean|solo]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write, Edit, request_user_input, TodoWrite
 reasoning-tier: Standard
 ---
 
@@ -23,7 +22,7 @@ Also resolve the review mode (once, store for all gate spawns this run):
 2. Else read `production/review-mode.txt` → use that value
 3. Else → default to `lean`
 
-See `~/.codex/skills/ccgs-references/references/docs/director-gates.md` for the full check pattern.
+See `../ccgs-references/references/docs/director-gates.md` for the full check pattern.
 
 ---
 
@@ -150,7 +149,7 @@ dependencies I'm missing or that should be removed?"
 - `lean` → skip (not a PHASE-GATE). Note: "TD-SYSTEM-BOUNDARY skipped — Lean mode." Proceed to priority assignment.
 - `full` → spawn as normal.
 
-**After dependency mapping is approved, load the `technical-director` role reference and perform that role pass using gate TD-SYSTEM-BOUNDARY (`~/.codex/skills/ccgs-references/references/docs/director-gates.md`) before proceeding to priority assignment.**
+**After dependency mapping is approved, load the `technical-director` role reference and perform that role pass using gate TD-SYSTEM-BOUNDARY (`../ccgs-references/references/docs/director-gates.md`) before proceeding to priority assignment.**
 
 Pass: the dependency map summary, layer assignments, bottleneck systems list, any circular dependency resolutions.
 
@@ -194,7 +193,7 @@ Pure technical necessity ("X depends on Y") is insufficient alone when the syste
 - `lean` → skip (not a PHASE-GATE). Note: "PR-SCOPE skipped — Lean mode." Proceed to writing the systems index.
 - `full` → spawn as normal.
 
-**After priorities are approved, load the `producer` role reference and perform that role pass using gate PR-SCOPE (`~/.codex/skills/ccgs-references/references/docs/director-gates.md`) before writing the index.**
+**After priorities are approved, load the `producer` role reference and perform that role pass using gate PR-SCOPE (`../ccgs-references/references/docs/director-gates.md`) before writing the index.**
 
 Pass: total system count per milestone tier, estimated implementation volume per tier (system count × average complexity), team size, stated project timeline.
 
@@ -217,8 +216,8 @@ This is the order the team should write GDDs in.
 
 ### Step 5a: Draft the Document
 
-Using the template at `~/.codex/skills/ccgs-references/references/docs/templates/systems-index.md`, populate the
-systems index with all data from Phases 2-4:
+Using the template at `../ccgs-references/references/docs/templates/systems-index.md`, populate the
+systems index with all data from Phases 2-3:
 - Fill the enumeration table
 - Fill the dependency map
 - Fill the recommended design order
@@ -242,7 +241,7 @@ Wait for approval. Write the file only after "yes."
 - `lean` → skip (not a PHASE-GATE). Note: "CD-SYSTEMS skipped — Lean mode." Proceed to Phase 7 next steps.
 - `full` → spawn as normal.
 
-**After the systems index is written, load the `creative-director` role reference and perform that role pass using gate CD-SYSTEMS (`~/.codex/skills/ccgs-references/references/docs/director-gates.md`).**
+**After the systems index is written, load the `creative-director` role reference and perform that role pass using gate CD-SYSTEMS (`../ccgs-references/references/docs/director-gates.md`).**
 
 Pass: systems index path, game pillars and core fantasy (from `design/gdd/game-concept.md`), MVP priority tier system list.
 

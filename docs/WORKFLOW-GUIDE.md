@@ -1239,9 +1239,10 @@ Tier 3 (Specialists):  gameplay-programmer, engine-programmer,
   conflicts go to `technical-director`. Scope conflicts go to `producer`.
 - No unilateral cross-domain changes.
 
-### Automated Hooks (Safety Net)
+### Reference Hook Scripts
 
-The system has 12 hooks that run automatically:
+The system ships 12 reference hook scripts. They do not run automatically in
+Codex unless you manually wire them into separate automation:
 
 | Hook | Trigger | What It Does |
 |------|---------|-------------|
@@ -1254,8 +1255,8 @@ The system has 12 hooks that run automatically:
 | `validate-push.sh` | Before push | Warns on pushes to main/develop |
 | `validate-assets.sh` | Before commit | Checks asset naming and size |
 | `validate-skill-change.sh` | Skill file written | Advises running `$ccgs-skill-test` after `codex-studio/skills/` changes |
-| `log-agent.sh` | Agent start | Logs agent invocations for audit trail |
-| `log-agent-stop.sh` | Agent stop | Completes agent audit trail (start + stop) |
+| `log-agent.sh` | Manual/reference | Logs role pass invocations for audit trail |
+| `log-agent-stop.sh` | Manual/reference | Completes role pass audit trail (start + stop) |
 | `session-stop.sh` | Session end | Final session logging |
 
 ### Context Resilience

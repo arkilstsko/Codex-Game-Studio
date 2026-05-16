@@ -3,13 +3,12 @@ name: skill-test
 description: "Validate skill files for structural compliance and behavioral correctness. Three modes: static (linter), spec (behavioral), audit (coverage report)."
 argument-hint: "static [skill-name | all] | spec [skill-name] | category [skill-name | all] | audit"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write
 reasoning-tier: Standard
 ---
 
 # Skill Test
 
-Validates `~/.codex/skills/ccgs-references/references/source-skills/*/SKILL.md` files for structural compliance and
+Validates `../ccgs-references/references/source-skills/*/SKILL.md` files for structural compliance and
 behavioral correctness. No external dependencies — runs entirely within the
 existing skill/hook/template architecture.
 
@@ -29,9 +28,9 @@ existing skill/hook/template architecture.
 Determine mode from the first argument:
 
 - `static [name]` → run 7 structural checks on one skill
-- `static all` → run 7 structural checks on all skills (Glob `~/.codex/skills/ccgs-references/references/source-skills/*/SKILL.md`)
+- `static all` → run 7 structural checks on all skills (Glob `../ccgs-references/references/source-skills/*/SKILL.md`)
 - `spec [name]` → read skill + test spec, evaluate assertions
-- `category [name]` → run category-specific rubric from `~/.codex/skills/ccgs-references/references/skill-testing-framework/quality-rubric.md`
+- `category [name]` → run category-specific rubric from `../ccgs-references/references/skill-testing-framework/quality-rubric.md`
 - `category all` → run category rubric for every skill that has a `category:` in catalog
 - `audit` (or no argument) → read catalog, list all skills and agents, show coverage
 
@@ -49,7 +48,7 @@ The file must contain all of these in the YAML frontmatter block:
 - `description:`
 - `argument-hint:`
 - `user-invocable:`
-- `allowed-tools:`
+- `Codex capability notes:`
 
 **FAIL** if any are absent.
 
@@ -74,7 +73,7 @@ The skill must contain ask-before-write language. Look for:
 - `"ask"` + `"write"` in close proximity (within same section)
 
 **WARN** if absent (some read-only skills legitimately skip this).
-**FAIL** if `allowed-tools` includes `Write` or `Edit` but no ask-before-write language is found.
+**FAIL** if Codex capability notes includes `Write` or `Edit` but no ask-before-write language is found.
 
 ### Check 5 — Next-Step Handoff
 The skill must end with a recommended next action or follow-up path. Look for:
@@ -139,12 +138,12 @@ Aggregate Verdict: N WARNINGS / N FAILURES
 
 ### Step 1 — Locate Files
 
-Find skill at `~/.codex/skills/ccgs-references/references/source-skills/[name]/SKILL.md`.
-Look up the spec path from `~/.codex/skills/ccgs-references/references/skill-testing-framework/catalog.yaml` — use the
+Find skill at `../ccgs-references/references/source-skills/[name]/SKILL.md`.
+Look up the spec path from `../ccgs-references/references/skill-testing-framework/catalog.yaml` — use the
 `spec:` field for the matching skill entry.
 
 If either is missing:
-- Missing skill: "Skill '[name]' not found in `~/.codex/skills/ccgs-references/references/source-skills/`."
+- Missing skill: "Skill '[name]' not found in `../ccgs-references/references/source-skills/`."
 - Missing spec path in catalog: "No spec path set for '[name]' in catalog.yaml."
 - Spec file not found at path: "Spec file missing at [path]. Run `/skill-test audit`
   to see coverage gaps."
@@ -181,7 +180,7 @@ For **Protocol Compliance** assertions (always present):
 ```
 === Skill Spec Test: /[name] ===
 Date: [date]
-Spec: ~/.codex/skills/ccgs-references/references/skill-testing-framework/skills/[category]/[name].md
+Spec: ../ccgs-references/references/skill-testing-framework/skills/[category]/[name].md
 
 Case 1: [Happy Path — name]
   Fixture: [summary]
@@ -205,12 +204,12 @@ Overall Verdict: FAIL (1 case failed, 1 warning)
 
 ### Step 5 — Offer to Write Results
 
-"May I write these results to `~/.codex/skills/ccgs-references/references/skill-testing-framework/results/skill-test-spec-[name]-[date].md`
-and update `~/.codex/skills/ccgs-references/references/skill-testing-framework/catalog.yaml`?"
+"May I write these results to `../ccgs-references/references/skill-testing-framework/results/skill-test-spec-[name]-[date].md`
+and update `../ccgs-references/references/skill-testing-framework/catalog.yaml`?"
 
 If yes:
-- Write results file to `~/.codex/skills/ccgs-references/references/skill-testing-framework/results/`
-- Update the skill's entry in `~/.codex/skills/ccgs-references/references/skill-testing-framework/catalog.yaml`:
+- Write results file to `../ccgs-references/references/skill-testing-framework/results/`
+- Update the skill's entry in `../ccgs-references/references/skill-testing-framework/catalog.yaml`:
   - `last_spec: [date]`
   - `last_spec_result: PASS|PARTIAL|FAIL`
 
@@ -220,8 +219,8 @@ If yes:
 
 ### Step 1 — Locate Skill and Category
 
-Find skill at `~/.codex/skills/ccgs-references/references/source-skills/[name]/SKILL.md`.
-Look up `category:` field in `~/.codex/skills/ccgs-references/references/skill-testing-framework/catalog.yaml`.
+Find skill at `../ccgs-references/references/source-skills/[name]/SKILL.md`.
+Look up `category:` field in `../ccgs-references/references/skill-testing-framework/catalog.yaml`.
 
 If skill not found: "Skill '[name]' not found."
 If no `category:` field: "No category assigned for '[name]' in catalog.yaml.
@@ -233,7 +232,7 @@ For `category all`: collect all skills with a `category:` field and process each
 
 ### Step 2 — Read Rubric Section
 
-Read `~/.codex/skills/ccgs-references/references/skill-testing-framework/quality-rubric.md`.
+Read `../ccgs-references/references/skill-testing-framework/quality-rubric.md`.
 Extract the section matching the skill's category (e.g., `### gate`, `### team`).
 
 ### Step 3 — Read Skill
@@ -267,7 +266,7 @@ Fix: Add TD-PHASE-GATE, PR-PHASE-GATE, and AD-PHASE-GATE to the full-mode direct
 
 ### Step 6 — Offer to Update Catalog
 
-"May I update `~/.codex/skills/ccgs-references/references/skill-testing-framework/catalog.yaml` to record this category check
+"May I update `../ccgs-references/references/skill-testing-framework/catalog.yaml` to record this category check
 (`last_category`, `last_category_result`) for [name]?"
 
 ---
@@ -276,21 +275,21 @@ Fix: Add TD-PHASE-GATE, PR-PHASE-GATE, and AD-PHASE-GATE to the full-mode direct
 
 ### Step 1 — Read Catalog
 
-Read `~/.codex/skills/ccgs-references/references/skill-testing-framework/catalog.yaml`. If missing, note that catalog doesn't exist
+Read `../ccgs-references/references/skill-testing-framework/catalog.yaml`. If missing, note that catalog doesn't exist
 yet (first-run state).
 
 ### Step 2 — Enumerate All Skills and Agents
 
-Glob `~/.codex/skills/ccgs-references/references/source-skills/*/SKILL.md` to get the complete list of skills.
+Glob `../ccgs-references/references/source-skills/*/SKILL.md` to get the complete list of skills.
 Extract skill name from each path (directory name).
 
-Also read the `agents:` section from `~/.codex/skills/ccgs-references/references/skill-testing-framework/catalog.yaml` to get the
+Also read the `agents:` section from `../ccgs-references/references/skill-testing-framework/catalog.yaml` to get the
 complete list of agents.
 
 ### Step 3 — Build Skill Coverage Table
 
 For each skill:
-- Check if a spec file exists (use the `spec:` path from catalog, or glob `~/.codex/skills/ccgs-references/references/skill-testing-framework/skills/*/[name].md`)
+- Check if a spec file exists (use the `spec:` path from catalog, or glob `../ccgs-references/references/skill-testing-framework/skills/*/[name].md`)
 - Look up `last_static`, `last_static_result`, `last_spec`, `last_spec_result`,
   `last_category`, `last_category_result`, `category` from catalog (or mark as
   "never" / "—" if not in catalog)
@@ -299,7 +298,7 @@ For each skill:
 ### Step 3b — Build Agent Coverage Table
 
 For each agent in catalog's `agents:` section:
-- Check if a spec file exists (use the `spec:` path from catalog, or glob `~/.codex/skills/ccgs-references/references/skill-testing-framework/agents/*/[name].md`)
+- Check if a spec file exists (use the `spec:` path from catalog, or glob `../ccgs-references/references/skill-testing-framework/agents/*/[name].md`)
 - Look up `last_spec`, `last_spec_result`, `category` from catalog
 
 ### Step 4 — Output Report
@@ -349,9 +348,9 @@ After any mode completes, offer contextual follow-up:
   correctness if a test spec exists."
 - After `static all` with failures: "Address NON-COMPLIANT skills first. Run
   `/skill-test static [name]` individually for detailed remediation guidance."
-- After `spec [name]` PASS: "Update `~/.codex/skills/ccgs-references/references/skill-testing-framework/catalog.yaml` to record this
+- After `spec [name]` PASS: "Update `../ccgs-references/references/skill-testing-framework/catalog.yaml` to record this
   pass date. Consider running `/skill-test audit` to find the next spec gap."
 - After `spec [name]` FAIL: "Review the failing assertions and update the skill
   or the test spec to resolve the mismatch."
 - After `audit`: "Start with the critical-priority gaps. Use the spec template
-  at `~/.codex/skills/ccgs-references/references/skill-testing-framework/templates/skill-test-spec.md` to create new specs."
+  at `../ccgs-references/references/skill-testing-framework/templates/skill-test-spec.md` to create new specs."

@@ -11,7 +11,7 @@ No gate IDs assigned.
 ## Static Assertions (Structural)
 
 - [ ] `description:` field is present and domain-specific (references accessibility / inclusive design / WCAG)
-- [ ] `allowed-tools:` list includes Read, Write, Edit, Bash, Glob, Grep
+- [ ] `Codex capability notes:` list includes Read, explicit write/edit capability, Bash, Glob, Grep
 - [ ] Model tier is Standard (default for specialists)
 - [ ] Agent definition does not claim authority over UX flow or visual art style
 

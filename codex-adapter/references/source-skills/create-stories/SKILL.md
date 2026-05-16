@@ -3,7 +3,6 @@ name: create-stories
 description: "Break a single epic into implementable story files. Reads the epic, its GDD, governing ADRs, and control manifest. Each story embeds its GDD requirement TR-ID, ADR guidance, acceptance criteria, story type, and test evidence path. Run after /create-epics for each epic."
 argument-hint: "[epic-slug | epic-path] [--review full|lean|solo]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write, request_user_input
 reasoning-tier: Standard
 agent: lead-programmer
 ---
@@ -87,7 +86,7 @@ For each GDD acceptance criterion:
 2. Each group = one story
 3. Order stories: foundational behaviour first, edge cases last, UI last
 
-**Story sizing rule:** one story = one focused session (~2-4 hours). If a
+**Story sizing rule:** one story = one focused session (~2-3 hours). If a
 group of criteria would take longer, split into two stories.
 
 For each story, determine:

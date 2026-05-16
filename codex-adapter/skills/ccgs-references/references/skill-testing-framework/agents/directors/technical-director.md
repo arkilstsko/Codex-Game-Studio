@@ -10,10 +10,10 @@
 
 ## Static Assertions (Structural)
 
-Verified by reading the agent's `~/.codex/skills/ccgs-references/references/agents/technical-director.md` frontmatter:
+Verified by reading the agent's `../ccgs-references/references/agents/technical-director.md` frontmatter:
 
 - [ ] `description:` field is present and domain-specific (references architecture, feasibility, ADR — not generic)
-- [ ] `allowed-tools:` list may include Read for architecture documents; Bash only if required for technical checks
+- [ ] `Codex capability notes:` list may include Read for architecture documents; Bash only if required for technical checks
 - [ ] Model tier is Deep tier per coordination-rules.md (directors with gate synthesis = Deep)
 - [ ] Agent definition does not claim authority over game design decisions or creative direction
 

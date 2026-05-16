@@ -3,7 +3,6 @@ name: story-readiness
 description: "Validate that a story file is implementation-ready. Checks for embedded GDD requirements, ADR references, engine notes, clear acceptance criteria, and no open design questions. Produces READY / NEEDS WORK / BLOCKED verdict with specific gaps. Use when user says 'is this story ready', 'can I start on this story', 'is story X ready to implement'."
 argument-hint: "[story-file-path or 'all' or 'sprint']"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, request_user_input
 reasoning-tier: Standard
 ---
 
@@ -29,7 +28,7 @@ Resolve the review mode once at startup (store for all gate spawns this run):
 2. Else read `production/review-mode.txt` → use that value
 3. Else → default to `lean`
 
-See `~/.codex/skills/ccgs-references/references/docs/director-gates.md` for the full check pattern and mode definitions.
+See `../ccgs-references/references/docs/director-gates.md` for the full check pattern and mode definitions.
 
 ---
 
@@ -332,7 +331,7 @@ Apply the review mode resolved in Phase 0 before spawning QL-STORY-READY:
 - `lean` → skip. Note: "QL-STORY-READY skipped — Lean mode." Proceed to close.
 - `full` → spawn as normal.
 
-Load the `qa-lead` role reference and perform that role pass using gate **QL-STORY-READY** (`~/.codex/skills/ccgs-references/references/docs/director-gates.md`).
+Load the `qa-lead` role reference and perform that role pass using gate **QL-STORY-READY** (`../ccgs-references/references/docs/director-gates.md`).
 
 Pass the following context:
 - Story title

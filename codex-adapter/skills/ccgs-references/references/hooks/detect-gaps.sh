@@ -13,8 +13,8 @@ echo "=== Checking for Documentation Gaps ==="
 FRESH_PROJECT=true
 
 # Check if engine is configured
-if [ -f "~/.codex/skills/ccgs-references/references/docs/technical-preferences.md" ]; then
-  ENGINE_LINE=$(grep -E "^\- \*\*Engine\*\*:" ~/.codex/skills/ccgs-references/references/docs/technical-preferences.md 2>/dev/null)
+if [ -f "../ccgs-references/references/docs/technical-preferences.md" ]; then
+  ENGINE_LINE=$(grep -E "^\- \*\*Engine\*\*:" ../ccgs-references/references/docs/technical-preferences.md 2>/dev/null)
   if [ -n "$ENGINE_LINE" ] && ! echo "$ENGINE_LINE" | grep -q "TO BE CONFIGURED" 2>/dev/null; then
     FRESH_PROJECT=false
   fi

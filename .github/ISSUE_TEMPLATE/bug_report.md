@@ -6,6 +6,9 @@ labels: bug
 assignees: ''
 ---
 
+Do not paste secrets, API keys, private project data, or suspected
+vulnerabilities into a public issue. Use `SECURITY.md` for security reports.
+
 ## Description
 
 A clear description of what the bug is.

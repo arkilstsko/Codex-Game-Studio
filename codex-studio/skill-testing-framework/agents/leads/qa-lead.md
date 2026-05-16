@@ -13,7 +13,7 @@
 Verified by reading the agent's `codex-studio/agents/qa-lead.md` frontmatter:
 
 - [ ] `description:` field is present and domain-specific (references test strategy, story readiness, coverage, bug triage — not generic)
-- [ ] `allowed-tools:` list is read-focused; may include Read for story files, test files, and coding-standards; Bash only if running test commands is required
+- [ ] `Codex capability notes:` list is read-focused; may include Read for story files, test files, and coding-standards; Bash only if running test commands is required
 - [ ] Model tier is Standard tier per coordination-rules.md
 - [ ] Agent definition does not claim authority over implementation decisions or game design
 

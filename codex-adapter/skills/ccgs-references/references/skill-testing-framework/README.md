@@ -12,7 +12,7 @@ Tests the skills and agents themselves — not any game built with them.
 ## What's in here
 
 ```
-~/.codex/skills/ccgs-references/references/skill-testing-framework/
+../ccgs-references/references/skill-testing-framework/
 ├── README.md              ← you are here
 ├── AGENTS.md              ← tells Codex how to use this framework
 ├── catalog.yaml           ← master registry: all 73 skills + 49 agents, coverage tracking

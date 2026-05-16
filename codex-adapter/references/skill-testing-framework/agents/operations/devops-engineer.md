@@ -11,7 +11,7 @@
 ## Static Assertions (Structural)
 
 - [ ] `description:` field is present and domain-specific (references CI/CD, build, deployment, version control)
-- [ ] `allowed-tools:` list matches the agent's role (Read/Write for pipeline config files, shell scripts, YAML; no game source editing tools)
+- [ ] `Codex capability notes:` list matches the agent's role (Read/Write for pipeline config files, shell scripts, YAML; no game source editing tools)
 - [ ] Model tier is Standard (default for operations specialists)
 - [ ] Agent definition does not claim authority over game logic, security audits, or QA test design
 

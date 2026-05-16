@@ -3,7 +3,6 @@ name: code-review
 description: "Performs an architectural and quality code review on a specified file or set of files. Checks for coding standard compliance, architectural pattern adherence, SOLID principles, testability, and performance concerns."
 argument-hint: "[path-to-file-or-directory]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Bash, request_user_input
 reasoning-tier: Standard
 agent: lead-programmer
 ---
@@ -16,7 +15,7 @@ Read the target file(s) in full. Read AGENTS.md for project coding standards.
 
 ## Phase 2: Identify Engine Specialists
 
-Read `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md`, section `## Engine Specialists`. Note:
+Read `../ccgs-references/references/docs/technical-preferences.md`, section `## Engine Specialists`. Note:
 
 - The **Primary** specialist (used for architecture and broad engine concerns)
 - The **Language/Code Specialist** (used when reviewing the project's primary language files)

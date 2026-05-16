@@ -2,7 +2,7 @@
 
 ## Skill Summary
 
-`/brainstorm` facilitates guided game concept ideation. It presents 2-4 concept
+`/brainstorm` facilitates guided game concept ideation. It presents 2-3 concept
 options with pros/cons, lets the user choose and refine a concept, and produces
 a structured `design/gdd/game-concept.md` document. The skill is collaborative —
 it asks questions before proposing options and iterates until the user approves
@@ -21,7 +21,7 @@ before writing `design/gdd/game-concept.md`.
 
 Verified automatically by `/skill-test static` — no fixture needed.
 
-- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`, `allowed-tools`
+- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`
 - [ ] Has ≥2 phase headings
 - [ ] Contains verdict keywords: APPROVED, REJECTED, CONCERNS
 - [ ] Contains "May I write" collaborative protocol language (for game-concept.md)
@@ -169,7 +169,7 @@ In `solo` mode: all 4 gates are skipped. Output notes all 4 as: "[GATE-ID] skipp
 
 ## Protocol Compliance
 
-- [ ] Presents 2-4 concept options with pros/cons before user commits
+- [ ] Presents 2-3 concept options with pros/cons before user commits
 - [ ] User confirms concept direction before director gates are invoked
 - [ ] All 4 director gates spawn in parallel in full mode
 - [ ] All 4 gates skipped in lean AND solo mode — each noted by name

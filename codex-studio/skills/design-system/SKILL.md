@@ -3,7 +3,6 @@ name: design-system
 description: "Guided, section-by-section GDD authoring for a single game system. Gathers context from existing docs, walks through each required section collaboratively, cross-references dependencies, and writes incrementally to file."
 argument-hint: "<system-name> [--review full|lean|solo]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write, Edit, request_user_input, TodoWrite
 reasoning-tier: Standard
 ---
 
@@ -316,7 +315,7 @@ Context  ->  Questions  ->  Options  ->  Decision  ->  Draft  ->  Approval  ->  
    exploration.
 
 3. **Options**: Where the section involves design choices (not just documentation),
-   present 2-4 approaches with pros/cons. Explain reasoning in conversation text,
+   present 2-3 approaches with pros/cons. Explain reasoning in conversation text,
    then use `request_user_input` to capture the decision.
 
 4. **Decision**: User picks an approach or provides custom direction.

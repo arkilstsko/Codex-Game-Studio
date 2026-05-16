@@ -4,7 +4,6 @@ description: "Full localization pipeline: scan for hardcoded strings, extract an
 argument-hint: "[scan|extract|validate|status|brief|cultural-review|vo-pipeline|rtl-check|freeze|qa]"
 user-invocable: true
 agent: localization-lead
-allowed-tools: Read, Glob, Grep, Write, Bash, request_user_input
 reasoning-tier: Standard
 ---
 

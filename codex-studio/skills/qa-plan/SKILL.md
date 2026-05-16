@@ -3,7 +3,6 @@ name: qa-plan
 description: "Generate a QA test plan for a sprint or feature. Reads GDDs and story files, classifies stories by test type (Logic/Integration/Visual/UI), and produces a structured test plan covering automated tests required, manual test cases, smoke test scope, and playtest sign-off requirements. Run before sprint begins or when starting a major feature."
 argument-hint: "[sprint | feature: system-name | story: path]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write, request_user_input
 reasoning-tier: Standard
 agent: qa-lead
 ---
@@ -235,7 +234,7 @@ then ask two questions together using `request_user_input`:
 
 ```
 question: "Ready to write the QA plan. Choose output options:"
-multiple-choice: true
+single-choice: true
 options:
   - "Write QA plan to production/qa/qa-plan-[sprint-slug]-[date].md"
   - "Also back-fill test case specs into each story file's ## QA Test Cases section (Recommended — enables /dev-story and /code-review traceability)"

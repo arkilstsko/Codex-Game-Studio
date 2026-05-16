@@ -11,7 +11,7 @@ No gate IDs assigned.
 ## Static Assertions (Structural)
 
 - [ ] `description:` field is present and domain-specific (references shaders / VFX / rendering)
-- [ ] `allowed-tools:` list includes Read, Write, Edit, Bash, Glob, Grep
+- [ ] `Codex capability notes:` list includes Read, explicit write/edit capability, Bash, Glob, Grep
 - [ ] Model tier is Standard (default for specialists)
 - [ ] Agent definition does not claim authority over art style direction or gameplay logic
 
@@ -47,7 +47,7 @@ No gate IDs assigned.
 ### Case 4: Engine version compatibility
 **Input:** "Use the new texture sampler API for the water shader."
 **Expected behavior:**
-- Checks the engine version reference (e.g., `~/.codex/skills/ccgs-references/references/docs/engine-reference/godot/VERSION.md`) before suggesting any API
+- Checks the engine version reference (e.g., `docs/engine-reference/godot/VERSION.md`) before suggesting any API
 - Flags if the requested API is post-cutoff (e.g., Godot 4.4+ texture type changes)
 - Provides the correct syntax for the project's pinned engine version
 - If uncertain about post-cutoff behavior, explicitly states the uncertainty and directs to verified docs

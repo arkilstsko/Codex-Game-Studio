@@ -3,7 +3,6 @@ name: ux-design
 description: "Guided, section-by-section UX spec authoring for a screen, flow, or HUD. Reads game concept, player journey, and relevant GDDs to provide context-aware design guidance. Produces ux-spec.md (per screen/flow) or hud-design.md using the studio templates."
 argument-hint: "[screen/flow name] or 'hud' or 'patterns'"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write, Edit, request_user_input
 reasoning-tier: Standard
 agent: ux-designer
 ---
@@ -415,7 +414,7 @@ Context  ->  Questions  ->  Options  ->  Decision  ->  Draft  ->  Approval  ->  
    constraints from context gathered in Phase 2.
 2. **Questions**: Ask what is needed to draft this section. Use `request_user_input`
    for constrained choices, conversational text for open-ended exploration.
-3. **Options**: Where design choices exist, present 2-4 approaches with pros/cons.
+3. **Options**: Where design choices exist, present 2-3 approaches with pros/cons.
    Explain reasoning in conversation, then use `request_user_input` to capture the decision.
 4. **Decision**: User picks an approach or provides custom direction.
 5. **Draft**: Write the section content in conversation for review. Flag provisional

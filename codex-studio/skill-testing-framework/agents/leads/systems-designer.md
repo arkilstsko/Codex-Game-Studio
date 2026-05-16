@@ -13,7 +13,7 @@
 Verified by reading the agent's `codex-studio/agents/systems-designer.md` frontmatter:
 
 - [ ] `description:` field is present and domain-specific (references formulas, progression curves, balance math, economy — not generic)
-- [ ] `allowed-tools:` list is read-focused; may include Bash for formula evaluation scripts if the project uses them; no write access outside `design/balance/` without delegation
+- [ ] `Codex capability notes:` list is read-focused; may include Bash for formula evaluation scripts if the project uses them; no write access outside `design/balance/` without delegation
 - [ ] Model tier is Standard tier per coordination-rules.md
 - [ ] Agent definition does not claim authority over narrative, visual design, or conceptual mechanic rule ownership
 

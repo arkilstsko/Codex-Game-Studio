@@ -3,7 +3,6 @@ name: skill-improve
 description: "Improve a skill using a test-fix-retest loop. Runs static checks, proposes targeted fixes, rewrites the skill, re-tests, and keeps or reverts based on score change."
 argument-hint: "[skill-name]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write, Bash
 reasoning-tier: Standard
 ---
 
@@ -45,7 +44,7 @@ If baseline is 0 FAILs and 0 WARNs, note it and proceed to Phase 2b.
 
 ### Phase 2b: Category Baseline
 
-Look up the skill's `category:` field in `Codex Skill Testing Framework/catalog.yaml`.
+Look up the skill's `category:` field in `codex-studio/skill-testing-framework/catalog.yaml`.
 
 If no `category:` field is found, display:
 "Category: not yet assigned — skipping category checks."
@@ -75,7 +74,7 @@ For each failing or warning **static** check, identify the exact gap:
 - **Check 1 fail** → which frontmatter field is missing
 - **Check 2 fail** → how many phases found vs. minimum required
 - **Check 3 fail** → no verdict keywords anywhere in the skill body
-- **Check 4 fail** → Write or Edit in allowed-tools but no ask-before-write language
+- **Check 4 fail** → explicit write or edit instructions in Codex capability notes but no ask-before-write language
 - **Check 5 warn** → no follow-up or next-step section at the end
 - **Check 6 warn** → `context: fork` set but fewer than 5 phases found
 - **Check 7 warn** → argument-hint is empty or doesn't match documented modes

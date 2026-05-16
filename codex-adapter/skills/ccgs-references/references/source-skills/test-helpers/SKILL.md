@@ -3,7 +3,6 @@ name: test-helpers
 description: "Generate engine-specific test helper libraries for the project's test suite. Reads existing test patterns and produces tests/helpers/ with assertion utilities, factory functions, and mock objects tailored to the project's systems. Reduces boilerplate in new test files."
 argument-hint: "[system-name | all | scaffold]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write
 reasoning-tier: Standard
 ---
 
@@ -37,7 +36,7 @@ and systems — so every developer writes less boilerplate and more assertions.
 
 ## 2. Detect Engine and Language
 
-Read `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md` and extract:
+Read `../ccgs-references/references/docs/technical-preferences.md` and extract:
 - `Engine:` value
 - `Language:` value
 - `Framework:` from the Testing section

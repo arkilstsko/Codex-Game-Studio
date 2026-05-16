@@ -13,7 +13,7 @@
 Verified by reading the agent's `codex-studio/agents/lead-programmer.md` frontmatter:
 
 - [ ] `description:` field is present and domain-specific (references code architecture, feasibility, code review, coding standards — not generic)
-- [ ] `allowed-tools:` list includes Read for source files; Bash may be included for static analysis or test runs; no write access outside `src/` without explicit delegation
+- [ ] `Codex capability notes:` list includes Read for source files; Bash may be included for static analysis or test runs; no write access outside `src/` without explicit delegation
 - [ ] Model tier is Standard tier per coordination-rules.md
 - [ ] Agent definition does not claim authority over game design, creative direction, or production scheduling
 

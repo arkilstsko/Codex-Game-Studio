@@ -4,7 +4,9 @@
 from __future__ import annotations
 
 import argparse
+import os
 import shutil
+import tempfile
 from pathlib import Path
 
 
@@ -67,9 +69,28 @@ def main() -> None:
     installed = 0
     for source in sources:
         target = target_root / source.name
+        backup = None
+        temp_parent = target_root
+        temp_path = Path(tempfile.mkdtemp(prefix=f".{source.name}.", suffix=".tmp", dir=temp_parent))
+        shutil.rmtree(temp_path)
         if target.exists():
-            shutil.rmtree(target)
-        shutil.copytree(source, target)
+            backup = target.with_name(f".{target.name}.backup")
+            if backup.exists():
+                shutil.rmtree(backup)
+            os.replace(target, backup)
+        try:
+            shutil.copytree(source, temp_path)
+            if not (temp_path / "SKILL.md").exists():
+                raise RuntimeError(f"replacement for {source.name} is missing SKILL.md")
+            os.replace(temp_path, target)
+            if backup and backup.exists():
+                shutil.rmtree(backup)
+        except Exception:
+            if temp_path.exists():
+                shutil.rmtree(temp_path)
+            if backup and backup.exists() and not target.exists():
+                os.replace(backup, target)
+            raise
         installed += 1
 
     print(f"Installed {installed} CCGS Codex skills into {target_root}")

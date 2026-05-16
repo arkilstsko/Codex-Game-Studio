@@ -3,7 +3,6 @@ name: onboard
 description: "Generates a contextual onboarding document for a new contributor or agent joining the project. Summarizes project state, architecture, conventions, and current priorities relevant to the specified role or area."
 argument-hint: "[role|area]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write
 reasoning-tier: Fast
 ---
 
@@ -11,7 +10,7 @@ reasoning-tier: Fast
 
 Read AGENTS.md for project overview and standards.
 
-Read the relevant agent definition from `~/.codex/skills/ccgs-references/references/agents/` if a specific role is specified.
+Read the relevant agent definition from `../ccgs-references/references/agents/` if a specific role is specified.
 
 ---
 

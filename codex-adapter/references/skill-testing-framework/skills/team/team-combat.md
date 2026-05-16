@@ -15,7 +15,7 @@ with verdict COMPLETE / NEEDS WORK / BLOCKED and handoffs to `/code-review`,
 
 ## Static Assertions (Structural)
 
-- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`, `allowed-tools`
+- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`
 - [ ] Has ≥2 phase headings (Phase 1 through Phase 6 are all present)
 - [ ] Contains verdict keywords: COMPLETE, NEEDS WORK, BLOCKED
 - [ ] Contains "May I write" or "File Write Protocol" — writes delegated to sub-agents, orchestrator does not write files directly
@@ -52,7 +52,7 @@ with verdict COMPLETE / NEEDS WORK / BLOCKED and handoffs to `/code-review`,
 - [ ] `request_user_input` called at each phase gate (at minimum before Phase 3 and before Phase 5)
 - [ ] Phase 3 agents launched simultaneously — no sequential dependency between gameplay-programmer, ai-programmer, technical-artist, sound-designer
 - [ ] Engine specialist runs in Phase 2 before Phase 3 begins (output incorporated into architecture)
-- [ ] All file writes delegated to sub-agents (orchestrator never calls Write/Edit directly)
+- [ ] All file writes delegated to sub-agents (orchestrator never calls explicit write/edit instructions directly)
 - [ ] Verdict COMPLETE present in final report
 - [ ] Next steps include `/code-review`, `/balance-check`, `/team-polish`
 - [ ] Design doc covers all 8 required GDD sections
@@ -118,12 +118,12 @@ with verdict COMPLETE / NEEDS WORK / BLOCKED and handoffs to `/code-review`,
 
 **Expected behavior:**
 1. Phase 3 begins after architecture approval
-2. All four Task calls — gameplay-programmer, ai-programmer, technical-artist, sound-designer — are issued before any result is awaited
+2. All four role-reference passes — gameplay-programmer, ai-programmer, technical-artist, sound-designer — are issued before any result is awaited
 3. Skill waits for all four agents to complete before proceeding to Phase 4
 4. If any single agent completes early, skill does not begin Phase 4 until all four have returned
 
 **Assertions:**
-- [ ] Four Task calls issued in a single batch (no sequential waiting between them)
+- [ ] Four role-reference passes issued in a single batch (no sequential waiting between them)
 - [ ] Phase 4 does not begin until all four Phase 3 agents have returned results
 - [ ] Skill does not pass one Phase 3 agent's output as input to another Phase 3 agent (they are independent)
 - [ ] All four Phase 3 agent results referenced in the Phase 4 integration step
@@ -159,7 +159,7 @@ with verdict COMPLETE / NEEDS WORK / BLOCKED and handoffs to `/code-review`,
 ## Protocol Compliance
 
 - [ ] `request_user_input` used at each phase transition — user approves before pipeline advances
-- [ ] All file writes delegated to sub-agents via Task — orchestrator does not call Write or Edit directly
+- [ ] All file writes delegated to sub-agents via Task — orchestrator does not call explicit write or edit instructions directly
 - [ ] Error Recovery Protocol followed: surface → assess → offer options → partial report
 - [ ] Phase 3 agents launched in parallel per skill spec
 - [ ] Partial report always produced even when agents are BLOCKED

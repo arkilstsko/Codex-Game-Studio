@@ -20,7 +20,7 @@ REVERTED (fix was applied but caused regression and was reverted).
 
 Verified automatically by `/skill-test static` — no fixture needed.
 
-- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`, `allowed-tools`
+- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`
 - [ ] Has ≥2 phase headings
 - [ ] Contains verdict keywords: IMPROVED, NO CHANGE, REVERTED
 - [ ] Contains "May I write" collaborative protocol language before applying fixes
@@ -39,8 +39,8 @@ None. `/skill-improve` is a meta-utility skill. No director gates apply.
 ### Case 1: Happy Path — Skill With 2 Static Failures, Both Fixed, IMPROVED
 
 **Fixture:**
-- `~/.codex/skills/ccgs-references/references/source-skills/some-skill/SKILL.md` has 2 static failures:
-  - Check 4: no "May I write" language despite having Write in allowed-tools
+- `../ccgs-references/references/source-skills/some-skill/SKILL.md` has 2 static failures:
+  - Check 4: no "May I write" language despite having explicit write instructions
   - Check 5: no next-step handoff at the end
 
 **Input:** `/skill-improve some-skill`
@@ -51,7 +51,7 @@ None. `/skill-improve` is a meta-utility skill. No director gates apply.
 3. Skill proposes fixes:
    - Add "May I write" language to the appropriate phase
    - Add a next-step handoff section at the end
-4. Skill asks "May I write improvements to `~/.codex/skills/ccgs-references/references/source-skills/some-skill/SKILL.md`?"
+4. Skill asks "May I write improvements to `../ccgs-references/references/source-skills/some-skill/SKILL.md`?"
 5. Fixes applied; `/skill-test static some-skill` re-run — now 7/7 checks pass
 6. Verdict is IMPROVED (5→7)
 
@@ -67,7 +67,7 @@ None. `/skill-improve` is a meta-utility skill. No director gates apply.
 ### Case 2: Fix Causes Regression — Score Comparison Shows Regression, REVERTED
 
 **Fixture:**
-- `~/.codex/skills/ccgs-references/references/source-skills/some-skill/SKILL.md` has 1 static failure (missing handoff)
+- `../ccgs-references/references/source-skills/some-skill/SKILL.md` has 1 static failure (missing handoff)
 - Proposed fix inadvertently removes the verdict keywords section
   (introducing a new failure)
 
@@ -94,7 +94,7 @@ None. `/skill-improve` is a meta-utility skill. No director gates apply.
 ### Case 3: Skill With Category Assignment — Baseline Captures Both Scores
 
 **Fixture:**
-- `~/.codex/skills/ccgs-references/references/source-skills/gate-check/SKILL.md` is a gate skill with 1 static failure
+- `../ccgs-references/references/source-skills/gate-check/SKILL.md` is a gate skill with 1 static failure
   and 2 category (G-criteria) failures
 - `tests/skills/quality-rubric.md` has Gate Skills section
 
@@ -106,7 +106,7 @@ None. `/skill-improve` is a meta-utility skill. No director gates apply.
    - Category: 3/5 G-criteria pass
 2. Combined baseline: 9/12
 3. Skill diagnoses all 3 failures and proposes fixes
-4. "May I write improvements to `~/.codex/skills/ccgs-references/references/source-skills/gate-check/SKILL.md`?"
+4. "May I write improvements to `../ccgs-references/references/source-skills/gate-check/SKILL.md`?"
 5. Fixes applied; both test types re-run
 6. Re-test: static 7/7, category 5/5 = 12/12
 7. Verdict is IMPROVED (9→12)
@@ -123,7 +123,7 @@ None. `/skill-improve` is a meta-utility skill. No director gates apply.
 ### Case 4: Skill Already Perfect — No Improvements Needed
 
 **Fixture:**
-- `~/.codex/skills/ccgs-references/references/source-skills/brainstorm/SKILL.md` has no static failures
+- `../ccgs-references/references/source-skills/brainstorm/SKILL.md` has no static failures
 - Category score is also 5/5 (if applicable)
 
 **Input:** `/skill-improve brainstorm`

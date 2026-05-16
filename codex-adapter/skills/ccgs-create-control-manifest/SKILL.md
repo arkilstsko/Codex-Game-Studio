@@ -15,8 +15,8 @@ Use the workflow below with these Codex mappings:
 - `Bash` means use `exec_command`.
 - `Web search` and `Web fetch` mean use Codex web/browser tools when available; prefer official engine documentation for engine lookups. If web tools are unavailable, ask the user for the source URL or state the limitation.
 - `request_user_input` means use Codex's structured input tool when available: at most 3 questions, 2-3 choices per question, no multi-select. Otherwise ask concise plain-text questions.
-- Installed reference root: `~/.codex/skills/ccgs-references/references`. In this repo, the same files are mirrored under `codex-adapter/references/`.
-- Role references are not native Codex agents. Simulate the named role locally using `references/agents/`; use Codex subagents only when the user explicitly asks for parallel agent work. Load matching memory from `references/agent-memory/` when it exists.
+- Installed reference root: `../ccgs-references/references`. In this repo, the same files are mirrored under `codex-adapter/references/`.
+- Role references are not native Codex agents. Simulate the named role locally using `../ccgs-references/references/agents/`; use Codex subagents only when the user explicitly asks for parallel agent work. Load matching memory from `../ccgs-references/references/agent-memory/` when it exists.
 - Hook scripts and statusline settings from `references/hook-config.json` are reference checks. Treat them as reference checks unless you install separate Codex automation around them.
 
 When this skill writes project artifacts, keep the original CCGS directory conventions (`design/`, `docs/`, `production/`, `src/`, `tests/`, `prototypes/`) unless the target project already has a stronger convention.
@@ -46,15 +46,15 @@ status. Re-run whenever new ADRs are accepted or existing ADRs are revised.
 - Note the ADR number and title for every rule sourced
 
 ### Technical Preferences
-- Read `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md`
+- Read `../ccgs-references/references/docs/technical-preferences.md`
 - Extract: naming conventions, performance budgets, approved libraries/addons,
   forbidden patterns
 
 ### Engine Reference
-- Read `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/VERSION.md` for engine + version
-- Read `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/deprecated-apis.md` — these become
+- Read `docs/engine-reference/[engine]/VERSION.md` for engine + version
+- Read `docs/engine-reference/[engine]/deprecated-apis.md` — these become
   forbidden API entries
-- Read `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/current-best-practices.md` if it exists
+- Read `docs/engine-reference/[engine]/current-best-practices.md` if it exists
 
 Report: "Loaded [N] Accepted ADRs, engine: [name + version]."
 
@@ -145,7 +145,7 @@ Use `request_user_input`:
 - `lean` → skip. Note: "TD-MANIFEST skipped — Lean mode." Proceed to Phase 5.
 - `full` → spawn as normal.
 
-Load the `technical-director` role reference and perform that role pass using gate **TD-MANIFEST** (`~/.codex/skills/ccgs-references/references/docs/director-gates.md`).
+Load the `technical-director` role reference and perform that role pass using gate **TD-MANIFEST** (`../ccgs-references/references/docs/director-gates.md`).
 
 Pass: the Control Manifest Preview from Phase 4 (rule counts per layer, full extracted rule list), the list of ADRs covered, engine version, and any rules sourced from technical-preferences.md or engine reference docs.
 
@@ -273,7 +273,7 @@ rule, see the referenced ADR.
 ### Forbidden APIs ([engine version])
 These APIs are deprecated or unverified for [engine + version]:
 - `[api name]` — deprecated since [version] / unverified post-cutoff
-- Source: `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/deprecated-apis.md`
+- Source: `docs/engine-reference/[engine]/deprecated-apis.md`
 
 ### Cross-Cutting Constraints
 - [constraint that applies everywhere, regardless of layer]

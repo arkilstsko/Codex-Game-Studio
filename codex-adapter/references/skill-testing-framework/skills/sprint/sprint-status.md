@@ -15,7 +15,7 @@ fast, low-cost status checks during a session.
 
 Verified automatically by `/skill-test static` — no fixture needed.
 
-- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`, `allowed-tools`
+- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`
 - [ ] Has ≥2 phase headings or numbered check sections
 - [ ] Contains verdict keywords: ON TRACK, AT RISK, BLOCKED
 - [ ] Does NOT require "May I write" language (read-only skill)
@@ -149,7 +149,7 @@ None. `/sprint-status` is a read-only reporting skill; no gates are invoked.
 
 ## Protocol Compliance
 
-- [ ] Does NOT use Write or Edit tools (read-only skill)
+- [ ] Does NOT use explicit write or edit instructions tools (read-only skill)
 - [ ] Presents story count breakdown before emitting verdict
 - [ ] Does not ask for approval
 - [ ] Ends with a recommended next step based on verdict

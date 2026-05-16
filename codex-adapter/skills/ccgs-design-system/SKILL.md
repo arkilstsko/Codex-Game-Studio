@@ -15,8 +15,8 @@ Use the workflow below with these Codex mappings:
 - `Bash` means use `exec_command`.
 - `Web search` and `Web fetch` mean use Codex web/browser tools when available; prefer official engine documentation for engine lookups. If web tools are unavailable, ask the user for the source URL or state the limitation.
 - `request_user_input` means use Codex's structured input tool when available: at most 3 questions, 2-3 choices per question, no multi-select. Otherwise ask concise plain-text questions.
-- Installed reference root: `~/.codex/skills/ccgs-references/references`. In this repo, the same files are mirrored under `codex-adapter/references/`.
-- Role references are not native Codex agents. Simulate the named role locally using `references/agents/`; use Codex subagents only when the user explicitly asks for parallel agent work. Load matching memory from `references/agent-memory/` when it exists.
+- Installed reference root: `../ccgs-references/references`. In this repo, the same files are mirrored under `codex-adapter/references/`.
+- Role references are not native Codex agents. Simulate the named role locally using `../ccgs-references/references/agents/`; use Codex subagents only when the user explicitly asks for parallel agent work. Load matching memory from `../ccgs-references/references/agent-memory/` when it exists.
 - Hook scripts and statusline settings from `references/hook-config.json` are reference checks. Treat them as reference checks unless you install separate Codex automation around them.
 
 When this skill writes project artifacts, keep the original CCGS directory conventions (`design/`, `docs/`, `production/`, `src/`, `tests/`, `prototypes/`) unless the target project already has a stronger convention.
@@ -32,7 +32,7 @@ Resolve the review mode (once, store for all gate spawns this run):
 2. Else read `production/review-mode.txt` → use that value
 3. Else → default to `lean`
 
-See `~/.codex/skills/ccgs-references/references/docs/director-gates.md` for the full check pattern.
+See `../ccgs-references/references/docs/director-gates.md` for the full check pattern.
 
 A system name or retrofit path is **required**. If missing:
 
@@ -177,10 +177,10 @@ Map the system's category (from systems-index.md) to an engine domain:
 | Dialogue, quests, narrative | Scripting |
 
 **Step 2 — Read engine context (if available):**
-- Read `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md` to identify the engine and version
-- If engine is configured, read `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/VERSION.md`
-- Read `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/modules/[domain].md` if it exists
-- Read `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/breaking-changes.md` for domain-relevant entries
+- Read `../ccgs-references/references/docs/technical-preferences.md` to identify the engine and version
+- If engine is configured, read `docs/engine-reference/[engine]/VERSION.md`
+- Read `docs/engine-reference/[engine]/modules/[domain].md` if it exists
+- Read `docs/engine-reference/[engine]/breaking-changes.md` for domain-relevant entries
 - Glob `docs/architecture/adr-*.md` and read any ADRs whose domain matches
   (check the Engine Compatibility table's "Domain" field)
 
@@ -231,7 +231,7 @@ Use `request_user_input`:
 Once the user confirms, **immediately** create the GDD file with empty section
 headers. This ensures incremental writes have a target.
 
-Use the template structure from `~/.codex/skills/ccgs-references/references/docs/templates/game-design-document.md`:
+Use the template structure from `../ccgs-references/references/docs/templates/game-design-document.md`:
 
 ```markdown
 # [System Name]
@@ -332,7 +332,7 @@ Context  ->  Questions  ->  Options  ->  Decision  ->  Draft  ->  Approval  ->  
    exploration.
 
 3. **Options**: Where the section involves design choices (not just documentation),
-   present 2-4 approaches with pros/cons. Explain reasoning in conversation text,
+   present 2-3 approaches with pros/cons. Explain reasoning in conversation text,
    then use `request_user_input` to capture the decision.
 
 4. **Decision**: User picks an approach or provides custom direction.
@@ -705,7 +705,7 @@ the source of truth). Verify:
 - `lean` → skip (not a PHASE-GATE). Note: "CD-GDD-ALIGN skipped — Lean mode." Proceed to Step 5b.
 - `full` → spawn as normal.
 
-Before finalizing the GDD, load the `creative-director` role reference and perform that role pass using gate **CD-GDD-ALIGN** (`~/.codex/skills/ccgs-references/references/docs/director-gates.md`).
+Before finalizing the GDD, load the `creative-director` role reference and perform that role pass using gate **CD-GDD-ALIGN** (`../ccgs-references/references/docs/director-gates.md`).
 
 Pass: completed GDD file path, game pillars (from `design/gdd/game-concept.md` or `design/gdd/game-pillars.md`), MDA aesthetics target.
 

@@ -3,7 +3,6 @@ name: design-system
 description: "Guided, section-by-section GDD authoring for a single game system. Gathers context from existing docs, walks through each required section collaboratively, cross-references dependencies, and writes incrementally to file."
 argument-hint: "<system-name> [--review full|lean|solo]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write, Edit, request_user_input, TodoWrite
 reasoning-tier: Standard
 ---
 
@@ -16,7 +15,7 @@ Resolve the review mode (once, store for all gate spawns this run):
 2. Else read `production/review-mode.txt` → use that value
 3. Else → default to `lean`
 
-See `~/.codex/skills/ccgs-references/references/docs/director-gates.md` for the full check pattern.
+See `../ccgs-references/references/docs/director-gates.md` for the full check pattern.
 
 A system name or retrofit path is **required**. If missing:
 
@@ -161,10 +160,10 @@ Map the system's category (from systems-index.md) to an engine domain:
 | Dialogue, quests, narrative | Scripting |
 
 **Step 2 — Read engine context (if available):**
-- Read `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md` to identify the engine and version
-- If engine is configured, read `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/VERSION.md`
-- Read `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/modules/[domain].md` if it exists
-- Read `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/breaking-changes.md` for domain-relevant entries
+- Read `../ccgs-references/references/docs/technical-preferences.md` to identify the engine and version
+- If engine is configured, read `docs/engine-reference/[engine]/VERSION.md`
+- Read `docs/engine-reference/[engine]/modules/[domain].md` if it exists
+- Read `docs/engine-reference/[engine]/breaking-changes.md` for domain-relevant entries
 - Glob `docs/architecture/adr-*.md` and read any ADRs whose domain matches
   (check the Engine Compatibility table's "Domain" field)
 
@@ -215,7 +214,7 @@ Use `request_user_input`:
 Once the user confirms, **immediately** create the GDD file with empty section
 headers. This ensures incremental writes have a target.
 
-Use the template structure from `~/.codex/skills/ccgs-references/references/docs/templates/game-design-document.md`:
+Use the template structure from `../ccgs-references/references/docs/templates/game-design-document.md`:
 
 ```markdown
 # [System Name]
@@ -316,7 +315,7 @@ Context  ->  Questions  ->  Options  ->  Decision  ->  Draft  ->  Approval  ->  
    exploration.
 
 3. **Options**: Where the section involves design choices (not just documentation),
-   present 2-4 approaches with pros/cons. Explain reasoning in conversation text,
+   present 2-3 approaches with pros/cons. Explain reasoning in conversation text,
    then use `request_user_input` to capture the decision.
 
 4. **Decision**: User picks an approach or provides custom direction.
@@ -689,7 +688,7 @@ the source of truth). Verify:
 - `lean` → skip (not a PHASE-GATE). Note: "CD-GDD-ALIGN skipped — Lean mode." Proceed to Step 5b.
 - `full` → spawn as normal.
 
-Before finalizing the GDD, load the `creative-director` role reference and perform that role pass using gate **CD-GDD-ALIGN** (`~/.codex/skills/ccgs-references/references/docs/director-gates.md`).
+Before finalizing the GDD, load the `creative-director` role reference and perform that role pass using gate **CD-GDD-ALIGN** (`../ccgs-references/references/docs/director-gates.md`).
 
 Pass: completed GDD file path, game pillars (from `design/gdd/game-concept.md` or `design/gdd/game-pillars.md`), MDA aesthetics target.
 

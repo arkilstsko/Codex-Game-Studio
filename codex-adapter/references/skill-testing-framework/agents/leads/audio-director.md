@@ -13,7 +13,7 @@
 Verified by reading the agent's `codex-studio/agents/audio-director.md` frontmatter:
 
 - [ ] `description:` field is present and domain-specific (references music direction, sound design, mix, audio implementation — not generic)
-- [ ] `allowed-tools:` list is read-focused; no Bash unless audio asset pipeline checks are justified
+- [ ] `Codex capability notes:` list is read-focused; no Bash unless audio asset pipeline checks are justified
 - [ ] Model tier is Standard tier per coordination-rules.md
 - [ ] Agent definition does not claim authority over visual design, code implementation, or narrative content
 

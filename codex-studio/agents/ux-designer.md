@@ -1,10 +1,8 @@
 ---
 name: ux-designer
 description: "The UX Designer owns user experience flows, interaction design, accessibility, information architecture, and input handling design. Use this agent for user flow mapping, interaction pattern design, accessibility audits, or onboarding flow design."
-tools: Read, Glob, Grep, Write, Edit, Web search
 reasoning-tier: Standard
 maxTurns: 20
-disallowedTools: Bash
 memory: project
 ---
 

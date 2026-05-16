@@ -13,7 +13,7 @@
 Verified by reading the agent's `codex-studio/agents/art-director.md` frontmatter:
 
 - [ ] `description:` field is present and domain-specific (references visual identity, art bible, asset standards — not generic)
-- [ ] `allowed-tools:` list is read-focused; image review capability if supported; no Bash unless asset pipeline checks are justified
+- [ ] `Codex capability notes:` list is read-focused; image review capability if supported; no Bash unless asset pipeline checks are justified
 - [ ] Model tier is Standard tier (NOT Deep — coordination-rules.md assigns Standard to art-director)
 - [ ] Agent definition does not claim authority over UX interaction flows or audio direction
 

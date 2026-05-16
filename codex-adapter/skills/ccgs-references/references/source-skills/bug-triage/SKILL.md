@@ -3,7 +3,6 @@ name: bug-triage
 description: "Read all open bugs in production/qa/bugs/, re-evaluate priority vs. severity, assign to sprints, surface systemic trends, and produce a triage report. Run at sprint start or when the bug count grows enough to need re-prioritization."
 argument-hint: "[sprint | full | trend]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write, Edit
 reasoning-tier: Standard
 ---
 
@@ -61,7 +60,7 @@ If no sprint file exists: note "No sprint plan found — assigning to backlog on
 
 ### Step 2c — Load severity reference
 
-Read `~/.codex/skills/ccgs-references/references/docs/coding-standards.md` for severity/priority definitions if they
+Read `../ccgs-references/references/docs/coding-standards.md` for severity/priority definitions if they
 exist. If they do not exist, use the standard definitions in Step 3.
 
 ---

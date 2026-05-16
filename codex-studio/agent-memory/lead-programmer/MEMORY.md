@@ -3,11 +3,14 @@
 ## Skill Authoring Conventions
 
 ### Frontmatter
-- Fields: `name`, `description`, `argument-hint`, `user-invocable`, `allowed-tools`
-- Read-only analysis skills that run in isolation also carry `context: fork` and `agent:`
-- Interactive skills (write files, ask questions) do NOT use `context: fork`
-- `request_user_input` is a usage pattern described in skill body text — it is NOT listed
-  in `allowed-tools` frontmatter (no existing skill does this)
+- Codex-facing workflow skills use only stable metadata fields: `name`,
+  `description`, `argument-hint`, and `user-invocable`.
+- Legacy tool policy fields such as `allowed-tools`, `tools`, and
+  `disallowedTools` are non-binding in Codex and should not be used in new
+  source skill or role frontmatter.
+- `request_user_input` is a body-level usage pattern. Codex supports at most 3
+  questions per call, with 2-3 choices per question. Each choice needs a
+  `label` and `description`; multi-select is not supported.
 
 ### File Layout
 - Skills live in `codex-studio/skills/<name>/SKILL.md` (subdirectory per skill, never flat .md)

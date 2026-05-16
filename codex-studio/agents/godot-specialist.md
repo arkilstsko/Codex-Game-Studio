@@ -1,7 +1,6 @@
 ---
 name: godot-specialist
 description: "The Godot Engine Specialist is the authority on all Godot-specific patterns, APIs, and optimization techniques. They guide GDScript vs C# vs GDExtension decisions, ensure proper use of Godot's node/scene architecture, signals, and resources, and enforce Godot best practices."
-tools: Read, Glob, Grep, Write, Edit, Bash
 reasoning-tier: Standard
 maxTurns: 20
 ---

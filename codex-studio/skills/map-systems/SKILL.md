@@ -3,7 +3,6 @@ name: map-systems
 description: "Decompose a game concept into individual systems, map dependencies, prioritize design order, and create the systems index."
 argument-hint: "[next | system-name] [--review full|lean|solo]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write, Edit, request_user_input, TodoWrite
 reasoning-tier: Standard
 ---
 
@@ -218,7 +217,7 @@ This is the order the team should write GDDs in.
 ### Step 5a: Draft the Document
 
 Using the template at `codex-studio/docs/templates/systems-index.md`, populate the
-systems index with all data from Phases 2-4:
+systems index with all data from Phases 2-3:
 - Fill the enumeration table
 - Fill the dependency map
 - Fill the recommended design order

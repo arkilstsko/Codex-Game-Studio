@@ -15,7 +15,7 @@ with verdict COMPLETE / BLOCKED and handoffs to `/design-review`, `/dev-story`,
 
 ## Static Assertions (Structural)
 
-- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`, `allowed-tools`
+- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`
 - [ ] Has ≥2 phase/step headings (Step 1 through Step 5 are all present)
 - [ ] Contains verdict keywords: COMPLETE, BLOCKED
 - [ ] Contains "May I write" or "File Write Protocol" — writes delegated to sub-agents, orchestrator does not write files directly
@@ -182,7 +182,7 @@ with verdict COMPLETE / BLOCKED and handoffs to `/design-review`, `/dev-story`,
 ## Protocol Compliance
 
 - [ ] `request_user_input` used at each step transition — user approves before pipeline advances
-- [ ] All file writes delegated to sub-agents via Task — orchestrator does not call Write or Edit directly
+- [ ] All file writes delegated to sub-agents via Task — orchestrator does not call explicit write or edit instructions directly
 - [ ] Error Recovery Protocol followed: surface → assess → offer options → partial report
 - [ ] Step 4 agents (art-director, accessibility-specialist) launched in parallel per skill spec
 - [ ] Partial report always produced even when agents are BLOCKED

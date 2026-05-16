@@ -85,6 +85,6 @@ past the sprint review.
 
 ---
 
-*Template: `~/.codex/skills/ccgs-references/references/docs/templates/test-evidence.md`*
+*Template: `../ccgs-references/references/docs/templates/test-evidence.md`*
 *Used for: Visual/Feel and UI story type evidence records*
 *Location: `production/qa/evidence/[story-slug]-evidence.md`*

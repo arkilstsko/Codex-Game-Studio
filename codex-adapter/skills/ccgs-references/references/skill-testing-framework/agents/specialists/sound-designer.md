@@ -11,7 +11,7 @@ No gate IDs assigned.
 ## Static Assertions (Structural)
 
 - [ ] `description:` field is present and domain-specific (references SFX / audio events / mixing)
-- [ ] `allowed-tools:` list includes Read, Write, Edit, Glob, Grep — does NOT include engine code execution tools
+- [ ] `Codex capability notes:` list includes Read, explicit write/edit capability, Glob, Grep — does NOT include engine code execution tools
 - [ ] Model tier is Standard (default for specialists)
 - [ ] Agent definition does not claim authority over music direction or audio code implementation
 

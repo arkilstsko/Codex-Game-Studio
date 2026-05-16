@@ -10,10 +10,10 @@
 
 ## Static Assertions (Structural)
 
-Verified by reading the agent's `~/.codex/skills/ccgs-references/references/agents/level-designer.md` frontmatter:
+Verified by reading the agent's `../ccgs-references/references/agents/level-designer.md` frontmatter:
 
 - [ ] `description:` field is present and domain-specific (references level layout, encounter design, pacing, environmental storytelling — not generic)
-- [ ] `allowed-tools:` list is read-focused; includes Read for level design documents and GDDs; no Bash unless level tooling requires it
+- [ ] `Codex capability notes:` list is read-focused; includes Read for level design documents and GDDs; no Bash unless level tooling requires it
 - [ ] Model tier is Standard tier per coordination-rules.md
 - [ ] Agent definition does not claim authority over narrative dialogue, AI behavior code, or visual art style
 

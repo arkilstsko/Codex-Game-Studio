@@ -11,7 +11,7 @@
 ## Static Assertions (Structural)
 
 - [ ] `description:` field is present and domain-specific (references i18n, string extraction, locale pipeline, localization)
-- [ ] `allowed-tools:` list matches the agent's role (Read/Write for localization config, pipeline docs, string tables; no game source editing or deployment tools)
+- [ ] `Codex capability notes:` list matches the agent's role (Read/Write for localization config, pipeline docs, string tables; no game source editing or deployment tools)
 - [ ] Model tier is Standard (default for specialists)
 - [ ] Agent definition does not claim authority over narrative content, game code implementation, or translation quality
 
@@ -35,7 +35,7 @@
 - Optionally notes what information a translator would need: context (who is speaking, to whom, game genre/tone), character limit constraints if any, glossary terms (e.g., if "traveler" has a game-specific translation)
 
 ### Case 3: Domain boundary — missing plural forms in Russian locale
-**Input**: "Our Russian locale files only have a singular form for item quantity strings. Russian requires multiple plural forms (1 item, 2-4 items, 5+ items use different forms)."
+**Input**: "Our Russian locale files only have a singular form for item quantity strings. Russian requires multiple plural forms (1 item, 2-3 items, 5+ items use different forms)."
 **Expected behavior**:
 - Identifies this as a locale-specific plural form gap: Russian has 3 plural categories (one, few, many) per CLDR/Unicode plural rules — a single string is insufficient
 - Flags it as a localization quality bug, not a minor style issue — incorrect plural forms are grammatically wrong and visible to players

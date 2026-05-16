@@ -16,10 +16,10 @@ REVISION NEEDED. It is a read-only skill (no file writes) and runs as a
 
 Verified automatically by `/skill-test static` — no fixture needed.
 
-- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`, `allowed-tools`
+- [ ] Has required frontmatter fields: `name`, `description`, `argument-hint`, `user-invocable`
 - [ ] Has ≥2 phase headings or numbered steps
 - [ ] Contains verdict keywords: APPROVED, NEEDS REVISION, MAJOR REVISION NEEDED
-- [ ] Does NOT require "May I write" language (read-only skill — `allowed-tools` excludes Write/Edit)
+- [ ] Does NOT require "May I write" language (read-only skill — Codex capability notes excludes explicit write/edit instructions)
 - [ ] Output format is documented (review template shown in skill body)
 
 ---
@@ -153,7 +153,7 @@ Verified automatically by `/skill-test static` — no fixture needed.
 
 ## Protocol Compliance
 
-- [ ] Does NOT use Write or Edit tools (read-only skill)
+- [ ] Does NOT use explicit write or edit instructions tools (read-only skill)
 - [ ] Presents complete findings before any verdict
 - [ ] Does not ask for approval before producing output (no writes to approve)
 - [ ] Ends with recommended next step (e.g., fix issues and re-run, or proceed to `/map-systems`)

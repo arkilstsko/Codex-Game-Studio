@@ -3,7 +3,6 @@ name: skill-improve
 description: "Improve a skill using a test-fix-retest loop. Runs static checks, proposes targeted fixes, rewrites the skill, re-tests, and keeps or reverts based on score change."
 argument-hint: "[skill-name]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write, Bash
 reasoning-tier: Standard
 ---
 
@@ -23,7 +22,7 @@ Usage: /skill-improve [skill-name]
 Example: /skill-improve tech-debt
 ```
 
-Verify `~/.codex/skills/ccgs-references/references/source-skills/[name]/SKILL.md` exists. If not, stop with:
+Verify `../ccgs-references/references/source-skills/[name]/SKILL.md` exists. If not, stop with:
 "Skill '[name]' not found."
 
 ---
@@ -45,7 +44,7 @@ If baseline is 0 FAILs and 0 WARNs, note it and proceed to Phase 2b.
 
 ### Phase 2b: Category Baseline
 
-Look up the skill's `category:` field in `~/.codex/skills/ccgs-references/references/skill-testing-framework/catalog.yaml`.
+Look up the skill's `category:` field in `../ccgs-references/references/skill-testing-framework/catalog.yaml`.
 
 If no `category:` field is found, display:
 "Category: not yet assigned — skipping category checks."
@@ -68,14 +67,14 @@ If BOTH static and category baselines are 0 FAILs and 0 WARNs, stop:
 
 ## Phase 3: Diagnose
 
-Read the full skill file at `~/.codex/skills/ccgs-references/references/source-skills/[name]/SKILL.md`.
+Read the full skill file at `../ccgs-references/references/source-skills/[name]/SKILL.md`.
 
 For each failing or warning **static** check, identify the exact gap:
 
 - **Check 1 fail** → which frontmatter field is missing
 - **Check 2 fail** → how many phases found vs. minimum required
 - **Check 3 fail** → no verdict keywords anywhere in the skill body
-- **Check 4 fail** → Write or Edit in allowed-tools but no ask-before-write language
+- **Check 4 fail** → explicit write or edit instructions in Codex capability notes but no ask-before-write language
 - **Check 5 warn** → no follow-up or next-step section at the end
 - **Check 6 warn** → `context: fork` set but fewer than 5 phases found
 - **Check 7 warn** → argument-hint is empty or doesn't match documented modes
@@ -98,7 +97,7 @@ Write a targeted fix for each failure and warning. Show the proposed changes
 as clearly marked before/after blocks. Only change what is failing — do not
 rewrite sections that are passing.
 
-Ask: "May I write this improved version to `~/.codex/skills/ccgs-references/references/source-skills/[name]/SKILL.md`?"
+Ask: "May I write this improved version to `../ccgs-references/references/source-skills/[name]/SKILL.md`?"
 
 If the user says no, stop here.
 
@@ -108,7 +107,7 @@ If the user says no, stop here.
 
 Record the current content of the skill file (for revert if needed).
 
-Write the improved skill to `~/.codex/skills/ccgs-references/references/source-skills/[name]/SKILL.md`.
+Write the improved skill to `../ccgs-references/references/source-skills/[name]/SKILL.md`.
 
 Re-run `/skill-test static [name]` and record the new static score.
 If a category was assigned, also re-run `/skill-test category [name]` and record the new category score.
@@ -133,8 +132,8 @@ Show a summary of what was fixed in each dimension.
 **If combined score is the same or worse:**
 Report: "Combined score did not improve."
 Show what changed and why it may not have helped.
-Ask: "May I revert `~/.codex/skills/ccgs-references/references/source-skills/[name]/SKILL.md` using git checkout?"
-If yes: run `git checkout -- ~/.codex/skills/ccgs-references/references/source-skills/[name]/SKILL.md`
+Ask: "May I revert `../ccgs-references/references/source-skills/[name]/SKILL.md` using git checkout?"
+If yes: run `git checkout -- ../ccgs-references/references/source-skills/[name]/SKILL.md`
 
 ---
 

@@ -3,7 +3,6 @@ name: review-all-gdds
 description: "Holistic cross-GDD consistency and game design review. Reads all system GDDs simultaneously and checks for contradictions between them, stale references, ownership conflicts, formula incompatibilities, and game design theory violations (dominant strategies, economic imbalance, cognitive overload, pillar drift). Run after all MVP GDDs are written, before architecture begins."
 argument-hint: "[focus: full | consistency | design-theory | since-last-review]"
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Write, Bash, request_user_input
 reasoning-tier: Deep
 ---
 
@@ -105,13 +104,13 @@ the same GDD inputs but produce separate reports. Spawn both as parallel Task
 agents simultaneously rather than waiting for Phase 2 to complete before
 starting Phase 3. Collect both results before writing the combined report.
 
-**When spawning parallel Task agents for Phase 2 and Phase 3, always pass:**
+**When spawning parallel role-reference passes for Phase 2 and Phase 3, always pass:**
 - The complete list of GDD file paths loaded in Phase 1 (explicit paths, not just counts)
 - The full TR registry contents if loaded in Phase 1b (paste the registry text, not just a file path)
 - The specific checklist items assigned to that agent's phase (Phase 2 gets 2a–2f; Phase 3 gets 3a–3g)
-- The engine name and version from `~/.codex/skills/ccgs-references/references/docs/technical-preferences.md` and `~/.codex/skills/ccgs-references/references/docs/engine-reference/[engine]/VERSION.md`
+- The engine name and version from `../ccgs-references/references/docs/technical-preferences.md` and `docs/engine-reference/[engine]/VERSION.md`
 
-Do not rely on the role pass to re-read these files — it has its own context window and cannot access Phase 1 results unless they are explicitly passed in the Task prompt.
+Do not rely on the role pass to re-read these files — it has its own context window and cannot access Phase 1 results unless they are explicitly passed in the role-reference prompt.
 
 ---
 

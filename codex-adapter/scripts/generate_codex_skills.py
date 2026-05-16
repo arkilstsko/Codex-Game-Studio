@@ -18,7 +18,7 @@ OUT_SKILLS = OUT_ROOT / "skills"
 FRONTMATTER_RE = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
 SLASH_REF_RE = re.compile(r"(?<!https:)`/([a-z0-9][a-z0-9-]*)`")
 SLASH_TEXT_RE = re.compile(r"(?<![A-Za-z0-9_.~)-])/([a-z0-9][a-z0-9-]*)\b(?![A-Za-z0-9_.~/-])")
-INSTALLED_REFERENCE_ROOT = "~/.codex/skills/ccgs-references/references"
+INSTALLED_REFERENCE_ROOT = "../ccgs-references/references"
 
 
 def parse_frontmatter(text: str) -> tuple[dict[str, str], str]:
@@ -69,7 +69,6 @@ def rewrite_reference_paths(body: str) -> str:
         "codex-studio/hook-config.json": f"{INSTALLED_REFERENCE_ROOT}/hook-config.json",
         "codex-studio/statusline.sh": f"{INSTALLED_REFERENCE_ROOT}/statusline.sh",
         "Codex Skill Testing Framework/": f"{INSTALLED_REFERENCE_ROOT}/skill-testing-framework/",
-        "docs/engine-reference/": f"{INSTALLED_REFERENCE_ROOT}/docs/engine-reference/",
     }
     for old, new in replacements.items():
         body = body.replace(old, new)
@@ -99,9 +98,16 @@ def rewrite_task_language(body: str) -> str:
     )
     body = body.replace("via Task", "using the role-reference workflow")
     body = body.replace("Task tool", "Codex role-reference workflow")
+    body = body.replace("actual role-reference passes", "role-reference passes")
     body = body.replace("Task calls", "role-reference passes")
     body = body.replace("Task call", "role-reference pass")
+    body = body.replace("Task agents", "role-reference passes")
+    body = body.replace("Task agent", "role-reference pass")
+    body = body.replace("Task prompt", "role-reference prompt")
     body = body.replace("Task subagent", "role-reference pass")
+    body = body.replace("SUBAGENT", "ROLE PASS")
+    body = body.replace("separate independent Codex session", "focused role-reference pass in the current Codex thread")
+    body = body.replace("spawning parallel Task agents", "running role-reference passes")
     body = body.replace("subagent_type:", "role:")
     body = body.replace("sub-agent", "role pass")
     body = body.replace("sub-agents", "role passes")
@@ -109,6 +115,7 @@ def rewrite_task_language(body: str) -> str:
     body = body.replace("subagents", "role passes")
     body = body.replace("The orchestrator does NOT call Write directly", "Perform approved file writes in the current Codex thread")
     body = body.replace("writes are delegated to role passes", "writes are performed in the current Codex thread after approval")
+    body = body.replace("multiple-choice: true", "single-choice: true")
     body = body.replace("multiSelect: true", "singleChoice: true")
     body = body.replace("multiSelect", "single-choice")
     body = body.replace("multi-tab", "multi-step")
@@ -131,7 +138,6 @@ def rewrite_installed_reference_text(root: Path) -> None:
         "codex-studio/hook-config.json": f"{INSTALLED_REFERENCE_ROOT}/hook-config.json",
         "codex-studio/statusline.sh": f"{INSTALLED_REFERENCE_ROOT}/statusline.sh",
         "Codex Skill Testing Framework/": f"{INSTALLED_REFERENCE_ROOT}/skill-testing-framework/",
-        "docs/engine-reference/": f"{INSTALLED_REFERENCE_ROOT}/docs/engine-reference/",
     }
     for path in root.rglob("*"):
         if not path.is_file() or path.suffix not in suffixes:
@@ -158,7 +164,7 @@ Use the workflow below with these Codex mappings:
 - `Web search` and `Web fetch` mean use Codex web/browser tools when available; prefer official engine documentation for engine lookups. If web tools are unavailable, ask the user for the source URL or state the limitation.
 - `request_user_input` means use Codex's structured input tool when available: at most 3 questions, 2-3 choices per question, no multi-select. Otherwise ask concise plain-text questions.
 - Installed reference root: `{INSTALLED_REFERENCE_ROOT}`. In this repo, the same files are mirrored under `codex-adapter/references/`.
-- Role references are not native Codex agents. Simulate the named role locally using `references/agents/`; use Codex subagents only when the user explicitly asks for parallel agent work. Load matching memory from `references/agent-memory/` when it exists.
+- Role references are not native Codex agents. Simulate the named role locally using `{INSTALLED_REFERENCE_ROOT}/agents/`; use Codex subagents only when the user explicitly asks for parallel agent work. Load matching memory from `{INSTALLED_REFERENCE_ROOT}/agent-memory/` when it exists.
 - Hook scripts and statusline settings from `references/hook-config.json` are reference checks. Treat them as reference checks unless you install separate Codex automation around them.
 
 When this skill writes project artifacts, keep the original CCGS directory conventions (`design/`, `docs/`, `production/`, `src/`, `tests/`, `prototypes/`) unless the target project already has a stronger convention.
