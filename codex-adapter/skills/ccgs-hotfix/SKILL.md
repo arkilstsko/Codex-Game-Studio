@@ -1,0 +1,196 @@
+---
+name: ccgs-hotfix
+description: "Codex Game Studio workflow `/hotfix`. Use when the user asks for CCGS game-studio workflow `ccgs-hotfix` or the original `/hotfix` command. Emergency fix workflow that bypasses normal sprint processes with a full audit trail. Creates hotfix branch, tracks approvals, and ensures the fix is backported correctly."
+---
+
+## Codex Adapter
+
+This is the Codex Game Studio workflow skill `hotfix`.
+
+Use the workflow below with these Codex mappings:
+
+- Slash-command references are mapped to Codex skill invocations with the `ccgs-` prefix.
+- `Read`, `Glob`, and `Grep` mean inspect files with `sed`, `find`, and `rg`.
+- `Write` and `Edit` mean make file changes with `apply_patch`.
+- `Bash` means use `exec_command`.
+- `Web search` and `Web fetch` mean use Codex web/browser tools when available; prefer official engine documentation for engine lookups. If web tools are unavailable, ask the user for the source URL or state the limitation.
+- `request_user_input` means use Codex's structured input tool when available: at most 3 questions, 2-3 choices per question, no multi-select. Otherwise ask concise plain-text questions.
+- Installed reference root: `~/.codex/skills/ccgs-references/references`. In this repo, the same files are mirrored under `codex-adapter/references/`.
+- Role references are not native Codex agents. Simulate the named role locally using `references/agents/`; use Codex subagents only when the user explicitly asks for parallel agent work. Load matching memory from `references/agent-memory/` when it exists.
+- Hook scripts and statusline settings from `references/hook-config.json` are reference checks. Treat them as reference checks unless you install separate Codex automation around them.
+
+When this skill writes project artifacts, keep the original CCGS directory conventions (`design/`, `docs/`, `production/`, `src/`, `tests/`, `prototypes/`) unless the target project already has a stronger convention.
+
+---
+
+> **Explicit invocation only**: This skill should only run when the user explicitly requests it with `$ccgs-hotfix`. Do not auto-invoke based on context matching.
+
+## Phase 1: Assess Severity
+
+Read the bug description or ID. Assess severity using these criteria:
+
+- **S1 (Critical)**: Game unplayable, data loss, security vulnerability
+- **S2 (Major)**: Significant feature broken, workaround exists
+- **S3 or lower**: Minor issue — normal bug fix workflow applies
+
+Confirm with `request_user_input`:
+- Prompt: "I've assessed this as **[assessed severity]** — [brief rationale]. Confirm severity to proceed:"
+- Options:
+  - `[A] S1 (Critical) — game unplayable, data loss, or security issue`
+  - `[B] S2 (Major) — significant feature broken, workaround exists`
+  - `[C] S3 or lower — redirect to normal bug fix workflow`
+
+If [C]: stop. Verdict: **REDIRECTED** — use the normal bug fix workflow for S3 and below.
+
+---
+
+## Phase 2: Create Hotfix Record
+
+Draft the hotfix record:
+
+```markdown
+## Hotfix: [Short Description]
+Date: [Date]
+Severity: [S1/S2]
+Reporter: [Who found it]
+Status: IN PROGRESS
+
+### Problem
+[Clear description of what is broken and the player impact]
+
+### Root Cause
+[To be filled during investigation]
+
+### Fix
+[To be filled during implementation]
+
+### Testing
+[What was tested and how]
+
+### Approvals
+- [ ] Fix reviewed by lead-programmer
+- [ ] Regression test passed (qa-tester)
+- [ ] Release approved (producer)
+
+### Rollback Plan
+[How to revert if the fix causes new issues]
+```
+
+Ask: "May I write this to `production/hotfixes/hotfix-[date]-[short-name].md`?"
+
+If yes, write the file, creating the directory if needed.
+
+---
+
+## Phase 3: Create Hotfix Branch
+
+Check whether this is a git repository:
+
+`Bash: git rev-parse --is-inside-work-tree 2>/dev/null`
+
+If this command fails or returns empty: note "Not a git repository — create the branch manually." and skip branch creation.
+
+If the check passes, use `request_user_input` before creating the branch:
+- Prompt: "Ready to create hotfix branch 'hotfix/[short-name]' from [base-ref]?"
+- Options:
+  - `[A] Yes — create branch`
+  - `[B] Use a different base ref — I'll specify it`
+  - `[C] Skip — I'll create the branch myself`
+
+Only run `git checkout -b hotfix/[short-name] [base-ref]` if user selects [A]. If [B]: ask the user for the base ref, then run the command with that ref. If [C]: skip branch creation and proceed to Phase 4.
+
+---
+
+## Phase 4: Investigate and Implement
+
+Focus on the minimal change that resolves the issue. Do NOT refactor, clean up, or add features alongside the hotfix.
+
+Validate the fix by running targeted tests for the affected system. Check for regressions in adjacent systems.
+
+Update the hotfix record with root cause, fix details, and test results.
+
+---
+
+## Phase 5: Collect Approvals
+
+Load each listed role reference and perform the sign-off passes. Use Codex role passes only when explicitly available and requested:
+
+- `role: lead-programmer` — Review the fix for correctness and side effects
+- `role: qa-tester` — Run targeted regression tests on the affected system
+- `role: producer` — Approve deployment timing and communication plan
+
+All three must return APPROVE before proceeding. If any returns CONCERNS or REJECT, do not deploy — surface the issue and resolve it first.
+
+---
+
+## Phase 5b: QA Re-Entry Gate
+
+After approvals, determine the QA scope required before deploying the hotfix. Load the `qa-lead` role reference and perform that role pass with:
+- The hotfix description and affected system
+- The regression test results from Phase 5
+- A list of all systems that touch the changed files (use Grep to find callers)
+
+Ask qa-lead: **Is a full smoke check sufficient, or does this fix require a targeted team-qa pass?**
+
+Apply the verdict:
+- **Smoke check sufficient** — run `$ccgs-smoke-check` against the hotfix build. If PASS, proceed to Phase 6.
+- **Targeted QA pass required** — run `$ccgs-team-qa [affected-system]` scoped to the changed system only. If QA returns APPROVED or APPROVED WITH CONDITIONS, proceed to Phase 6.
+- **Full QA required** — S1 fixes that touch core systems may require a full `$ccgs-team-qa sprint`. This delays deployment but prevents a bad patch.
+
+Do not skip this gate. A hotfix that breaks something else is worse than the original bug.
+
+---
+
+## Phase 6: Update Bug Status and Deploy
+
+Update the original bug file if one exists:
+
+```markdown
+## Fix Record
+**Fixed in**: hotfix/[branch-name] — [commit hash or description]
+**Fixed date**: [date]
+**Status**: Fixed — Pending Verification
+```
+
+Set `**Status**: Fixed — Pending Verification` in the bug file header.
+
+Output a deployment summary:
+
+```
+## Hotfix Ready to Deploy: [short-name]
+
+**Severity**: [S1/S2]
+**Root cause**: [one line]
+**Fix**: [one line]
+**QA gate**: [Smoke check PASS / Team-QA APPROVED]
+**Approvals**: lead-programmer ✓ / qa-tester ✓ / producer ✓
+**Rollback plan**: [from Phase 2 record]
+
+Merge to: release branch AND development branch
+Next: $ccgs-bug-report verify [BUG-ID] after deploy to confirm resolution
+```
+
+### Rules
+- Hotfixes must be the MINIMUM change to fix the issue — no cleanup, no refactoring
+- Every hotfix must have a rollback plan documented before deployment
+- Hotfix branches merge to BOTH the release branch AND the development branch
+- All hotfixes require a post-incident review within 48 hours
+- If the fix is complex enough to need more than 4 hours, escalate to `technical-director`
+
+---
+
+## Phase 7: Post-Deploy Verification
+
+After deploying, run `$ccgs-bug-report verify [BUG-ID]` to confirm the fix resolved the issue in the deployed build.
+
+If VERIFIED FIXED: run `$ccgs-bug-report close [BUG-ID]` to formally close it.
+If STILL PRESENT: the hotfix failed — immediately re-open, assess rollback, and escalate.
+
+Schedule a post-incident review within 48 hours using `$ccgs-retrospective hotfix`.
+
+Use `request_user_input`:
+- Prompt: "Hotfix complete. What's the next step?"
+- Options:
+  - `[A] Run $ccgs-smoke-check to verify the fix`
+  - `[B] Run $ccgs-patch-notes to document this hotfix`
+  - `[C] Stop here`
